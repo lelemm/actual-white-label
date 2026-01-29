@@ -1,4 +1,4 @@
-# Backing up Your Actual Budget
+# Backing up Your Actual White Label
 
 :::note
 

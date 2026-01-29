@@ -1,8 +1,8 @@
-This is the main project to run [Actual](https://github.com/actualbudget/actual), a local-first personal finance tool. It comes with the latest version of Actual, and a server to persist changes and make data available across all devices.
+This is the main project to run [Actual White Label](https://github.com/actualbudget/actual), a white label app framework for building local-first app solutions. It comes with the latest version of Actual White Label, and a server to persist changes and make data available across all devices.
 
 ### Getting Started
 
-Actual is a local-first personal finance tool. It is 100% free and open-source, written in NodeJS, it has a synchronization element so that all your changes can move between devices without any heavy lifting.
+Actual White Label is a white label app framework for building local-first app solutions. It is 100% free and open-source, written in NodeJS, it has a synchronization element so that all your changes can move between devices without any heavy lifting.
 
 If you are interested in contributing, or want to know how development works, see our [contributing](https://actualbudget.org/docs/contributing/) document we would love to have you.
 

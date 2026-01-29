@@ -10,25 +10,13 @@ import { NavLink } from 'react-router';
 import { animated, config, useSpring } from 'react-spring';
 
 import { useResponsive } from '@actual-app/components/hooks/useResponsive';
-import {
-  SvgAdd,
-  SvgCog,
-  SvgCreditCard,
-  SvgPiggyBank,
-  SvgReports,
-  SvgStoreFront,
-  SvgTuning,
-  SvgWallet,
-} from '@actual-app/components/icons/v1';
-import { SvgCalendar3 } from '@actual-app/components/icons/v2';
+import { SvgCog, SvgTuning } from '@actual-app/components/icons/v1';
 import { styles } from '@actual-app/components/styles';
 import { theme } from '@actual-app/components/theme';
 import { View } from '@actual-app/components/view';
 import { useDrag } from '@use-gesture/react';
 
-import { useIsTestEnv } from '@desktop-client/hooks/useIsTestEnv';
 import { useScrollListener } from '@desktop-client/hooks/useScrollListener';
-import { useSyncServerStatus } from '@desktop-client/hooks/useSyncServerStatus';
 
 const COLUMN_COUNT = 3;
 const PILL_HEIGHT = 15;
@@ -43,9 +31,7 @@ export const MOBILE_NAV_HEIGHT = ROW_HEIGHT + PILL_HEIGHT;
 export function MobileNavTabs() {
   const { t } = useTranslation();
   const { isNarrowWidth } = useResponsive();
-  const syncServerStatus = useSyncServerStatus();
-  const isTestEnv = useIsTestEnv();
-  const isUsingServer = syncServerStatus !== 'no-server' || isTestEnv;
+  // White-label version: Server sync status not needed for menu
   const [navbarState, setNavbarState] = useState<'default' | 'open' | 'hidden'>(
     'default',
   );
@@ -97,59 +83,14 @@ export function MobileNavTabs() {
     [api],
   );
 
+  // White-label version: Only Rules and Settings remain
   const navTabs = [
-    {
-      name: t('Budget'),
-      path: '/budget',
-      style: navTabStyle,
-      Icon: SvgWallet,
-    },
-    {
-      name: t('Transaction'),
-      path: '/transactions/new',
-      style: navTabStyle,
-      Icon: SvgAdd,
-    },
-    {
-      name: t('Accounts'),
-      path: '/accounts',
-      style: navTabStyle,
-      Icon: SvgPiggyBank,
-    },
-    {
-      name: t('Reports'),
-      path: '/reports',
-      style: navTabStyle,
-      Icon: SvgReports,
-    },
-    {
-      name: t('Schedules'),
-      path: '/schedules',
-      style: navTabStyle,
-      Icon: SvgCalendar3,
-    },
-    {
-      name: t('Payees'),
-      path: '/payees',
-      style: navTabStyle,
-      Icon: SvgStoreFront,
-    },
     {
       name: t('Rules'),
       path: '/rules',
       style: navTabStyle,
       Icon: SvgTuning,
     },
-    ...(isUsingServer
-      ? [
-          {
-            name: t('Bank Sync'),
-            path: '/bank-sync',
-            style: navTabStyle,
-            Icon: SvgCreditCard,
-          },
-        ]
-      : []),
     {
       name: t('Settings'),
       path: '/settings',

@@ -1,4 +1,4 @@
-# Credit Cards and Actual Budget
+# Credit Cards and Actual White Label
 
 Using a credit card in any budgeting software can be confusing, and Actual is no different. Of all the questions that are asked about budgeting, credit card usage is near the top of the list so don't feel bad if you're a little confused.
 

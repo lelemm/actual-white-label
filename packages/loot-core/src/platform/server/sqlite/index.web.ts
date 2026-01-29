@@ -182,6 +182,8 @@ export async function openDatabase(pathOrBuffer?: string | Buffer) {
           // @ts-expect-error 2nd argument missed in sql.js types
           { filename: true },
         );
+        // Set journal mode to MEMORY (not WAL) for web platform
+        // WAL mode requires mmap which is not available in browsers
         db.exec(`
           PRAGMA journal_mode=MEMORY;
           PRAGMA cache_size=-10000;

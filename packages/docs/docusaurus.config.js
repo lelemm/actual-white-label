@@ -10,12 +10,12 @@ const defaultOptions = {
 
 /** @type {import('@docusaurus/types').Config} */
 module.exports = {
-  title: 'Actual Budget',
+  title: 'Actual White Label',
   tagline: 'Your finances - made simple',
   url: 'https://actualbudget.org/',
   baseUrl: '/',
   onBrokenLinks: 'throw',
-  favicon: 'img/favicon.ico',
+  favicon: 'img/favicon.png',
 
   projectName: 'actualbudget.github.io',
   organizationName: 'actualbudget',
@@ -52,10 +52,10 @@ module.exports = {
           ...defaultOptions,
           feedOptions: {
             type: 'rss',
-            title: 'Actual Budget Blog',
+            title: 'Actual White Label Blog',
             description:
-              'Stay updated with the latest blog posts from Actual Budget',
-            copyright: `Copyright © ${new Date().getFullYear()} Actual Budget. All rights reserved.`,
+              'Stay updated with the latest blog posts from Actual White Label',
+            copyright: `Copyright © ${new Date().getFullYear()} Actual White Label. All rights reserved.`,
           },
           onUntruncatedBlogPosts: 'ignore',
         },
@@ -148,7 +148,7 @@ module.exports = {
             href: 'https://actualbudget.org/blog/rss.xml',
           },
         ],
-        copyright: `Copyright © ${new Date().getFullYear()} Actual Budget. Built with Docusaurus.`,
+        copyright: `Copyright © ${new Date().getFullYear()} Actual White Label. Built with Docusaurus.`,
       },
       prism: {
         theme: themes.github,

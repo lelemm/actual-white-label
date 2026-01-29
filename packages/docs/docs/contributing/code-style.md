@@ -2,7 +2,7 @@
 title: Code Style and Conventions
 ---
 
-This guide outlines the coding conventions and style guidelines for contributing to Actual Budget. Following these guidelines helps maintain consistency and code quality across the codebase.
+This guide outlines the coding conventions and style guidelines for contributing to Actual White Label. Following these guidelines helps maintain consistency and code quality across the codebase.
 
 ## TypeScript Guidelines
 

@@ -2,7 +2,7 @@
   "name": "actual",
   "version": "0.0.1",
   "private": true,
-  "description": "A local-first personal finance system",
+  "description": "A white label app framework for building local-first app solutions",
   "homepage": "https://github.com/actualbudget/actual/",
   "bugs": {
     "url": "https://github.com/actualbudget/actual/issues/"
@@ -48,7 +48,7 @@
     "test": "lage test --continue",
     "test:debug": "lage test --no-cache --continue",
     "e2e": "yarn workspace @actual-app/web run e2e",
-    "e2e:desktop": "yarn build:desktop --skip-exe-build --skip-translations && yarn workspace desktop-electron e2e",
+    "e2e:desktop": "yarn build:desktop --skip-exe-build && yarn workspace desktop-electron e2e",
     "playwright": "yarn workspace @actual-app/web run playwright",
     "vrt": "yarn workspace @actual-app/web run vrt",
     "vrt:docker": "./bin/run-vrt",

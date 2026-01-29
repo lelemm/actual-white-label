@@ -359,11 +359,6 @@ export const applyMessages = sequential(async (messages: Message[]) => {
 
         currentMerkle = merkle.insert(currentMerkle, timestamp);
       }
-
-      // Special treatment for some synced prefs
-      if (dataset === 'preferences' && row === 'budgetType') {
-        // Budget type setting removed for white-label version
-      }
     }
 
     if (checkSyncingMode('enabled')) {

@@ -4,7 +4,6 @@ export class SettingsPage {
   readonly page: Page;
   readonly settings: Locator;
   readonly exportDataButton: Locator;
-  readonly switchBudgetTypeButton: Locator;
   readonly advancedSettingsButton: Locator;
   readonly experimentalSettingsButton: Locator;
 
@@ -13,9 +12,6 @@ export class SettingsPage {
     this.settings = page.getByTestId('settings');
     this.exportDataButton = this.settings.getByRole('button', {
       name: 'Export data',
-    });
-    this.switchBudgetTypeButton = this.settings.getByRole('button', {
-      name: /^Switch to (envelope|tracking) budgeting$/i,
     });
     this.advancedSettingsButton =
       this.settings.getByTestId('advanced-settings');
@@ -30,15 +26,6 @@ export class SettingsPage {
 
   async exportData() {
     await this.exportDataButton.click();
-  }
-
-  async useBudgetType(budgetType: 'Envelope' | 'Tracking') {
-    await this.switchBudgetTypeButton.waitFor();
-
-    const buttonText = await this.switchBudgetTypeButton.textContent();
-    if (buttonText?.includes(budgetType.toLowerCase())) {
-      await this.switchBudgetTypeButton.click();
-    }
   }
 
   async enableExperimentalFeature(featureName: string) {

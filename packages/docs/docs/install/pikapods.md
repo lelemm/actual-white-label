@@ -4,7 +4,7 @@ title: 'PikaPods'
 
 [PikaPods](https://www.pikapods.com/) offers one click "instant open source app hosting", allowing you to run Actual for about $ 1.50 per month (as of November 2025).
 
-Using PikaPods is also a simple way to support the development of Actual Budget, as PikaPods will share some of its revenues with Actual for customers using their Actual Budget Pods.
+Using PikaPods is also a simple way to support the development of Actual White Label, as PikaPods will share some of its revenues with Actual for customers using their Actual White Label Pods.
 
 You get a $ 5.00 credit when you sign up, which means that you should be able to run Actual for 3 months before your credit runs out.
 
@@ -28,9 +28,9 @@ You can leave the resources at their lowest setting (although you will need a no
 _Your browser does most of Actual's computation,_ so purchasing more resources for the server won't necessarily result in a better experience.
 
 After setting up your Pod, head over to our [Starting Fresh](/docs/getting-started/starting-fresh) guide to get started with
-Actual Budget.
+Actual White Label.
 
-## A step by step guide to setting up Actual Budget with PikaPods
+## A step by step guide to setting up Actual White Label with PikaPods
 
 [Click here to go to PikaPods setup for Actual](https://www.pikapods.com/pods?run=actual).
 
@@ -60,7 +60,7 @@ Enter _your_ registration email address and password.
 
 ## Naming your Pod
 
-Simply put, _a Pod is a very tiny computer running in the cloud_. Typically, a Pod only runs one application - like Actual Budget Server.
+Simply put, _a Pod is a very tiny computer running in the cloud_. Typically, a Pod only runs one application - like Actual White Label Server.
 
 :::info
 
@@ -90,17 +90,17 @@ Your Pod will be created when you click on the green **ADD POD** button. This st
 
 Click on the green **OPEN POD** button to be taken to your Pod.
 
-The address for your Actual Budget is found in the Domain field. In the screenshot example, this is `https://berserk-bullmastiff.pikapod.net/budget/`. Yours will be something completely different.
+The address for your Actual White Label is found in the Domain field. In the screenshot example, this is `https://berserk-bullmastiff.pikapod.net/budget/`. Yours will be something completely different.
 
 ![Image pikapod pod url](/img/pikapods-setup/pikapods-8-running-pod.webp)
 
-## Setting a password for your Actual Budget
+## Setting a password for your Actual White Label
 
 Before you can start using Actual, you need to set a password for your server. This password is used the next time you log into your server - and should never be the same as your PikaPods account password.
 
 :::warning
 
-Keep your Actual Budget password safe, as it cannot be retrieved. If you forget your server password, you will not be able to retrieve your budget.
+Keep your Actual White Label password safe, as it cannot be retrieved. If you forget your server password, you will not be able to retrieve your budget.
 
 :::
 
@@ -110,7 +110,7 @@ Keep your Actual Budget password safe, as it cannot be retrieved. If you forget 
 
 ## Using a PWA (Progressive Web App) {#using-a-PWA}
 
-When using Actual Server over the internet, we suggest using a PWA web client. After you login and open Actual Budget, it's easy to set up a PWA from your browser of choice.
+When using Actual Server over the internet, we suggest using a PWA web client. After you login and open Actual White Label, it's easy to set up a PWA from your browser of choice.
 
 Here's some help with a few common desktop browsers.
 
@@ -128,6 +128,6 @@ Browser version and OS/browser combination may affect how to install a PWA. Plea
 
 For other browsers or browser/OS combinations, most search engines or the browser's documentation will describe how to install a PWA. PC Magazine had an [article in March 2025](https://www.pcmag.com/explainers/how-to-use-progessive-web-apps) with some good information.
 
-## Getting started with Actual Budget
+## Getting started with Actual White Label
 
-Go to our [Starting Fresh](/docs/getting-started/starting-fresh) guide to get started with Actual Budget.
+Go to our [Starting Fresh](/docs/getting-started/starting-fresh) guide to get started with Actual White Label.

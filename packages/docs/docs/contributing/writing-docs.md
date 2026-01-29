@@ -21,7 +21,7 @@ We generate our website using the [Docusaurus](https://docusaurus.io/) system, a
 If you're interested in contributing, you'll need to know about the following two resources:
 
 - [Actual documentation repository on GitHub](https://github.com/actualbudget/actual/tree/master/packages/docs)
-- [Actual Budget #documentation channel on Discord](https://discord.com/channels/937901803608096828/1027831463103696928)
+- [Actual White Label #documentation channel on Discord](https://discord.com/channels/937901803608096828/1027831463103696928)
 
 ## Documentation Structure
 
@@ -130,7 +130,7 @@ Docusaurus 3 provides translation using [i18n](https://docusaurus.io/docs/i18n/i
 
 - **Friendly and Approachable**: Write in a conversational and welcoming tone. The goal is to make users feel comfortable and supported.
 
-- **Active Voice**: Use active voice to make sentences more direct and engaging. Example: _Install Actual Budget on your computer_ instead of _Actual Budget should be installed on your computer_.
+- **Active Voice**: Use active voice to make sentences more direct and engaging. Example: _Install Actual White Label on your computer_ instead of _Actual White Label should be installed on your computer_.
 
 - **Time Neutral**: Use present voice, unless documentation is for experimental or unreleased features. Where time references are made, remove them upon release or removal of the feature. Example: _Filters can be used..._ instead of _As of June 2022 update, you can..._.
 
@@ -147,7 +147,7 @@ Docusaurus 3 provides translation using [i18n](https://docusaurus.io/docs/i18n/i
 
 - **Use bullet points** or numbered lists to break down information into digestible chunks.
 
-- **Consistent Terminology**: Use consistent terminology throughout the documentation. Refer to the product as "Actual Budget" or "Actual."
+- **Consistent Terminology**: Use consistent terminology throughout the documentation. Refer to the product as "Actual White Label" or "Actual."
 
 ## Formatting Text
 
@@ -333,7 +333,7 @@ c. The first day of the week controls grouping on reports.
 #### Do not Draw Annotations Using "Free Hand"
 
 Do not use free hand "marker pens", boxes or arrows, as these kind of annotations just look sloppy. Ask for help on the
-[Actual Budget #documentation Discord channel](https://discord.com/channels/937901803608096828/1027831463103696928)
+[Actual White Label #documentation Discord channel](https://discord.com/channels/937901803608096828/1027831463103696928)
 if you need to annotate images but are not able to do it yourself.
 
 ![Image with ugly free-hand annotations](/img/repo/annotation-free-hand.webp)
@@ -381,7 +381,7 @@ There are many software packages available to help you take screenshots. Both Wi
 
 Some of the mentioned tools will let you annotate screenshots, others will not.
 
-If you are serious about your screenshots (and also helping out with the Actual documentation), you might want to consider tools created explicitly for taking screenshots and having good annotation support. This list is not an endorsement from the Actual Budget project team but is meant as a starting point for such tools.
+If you are serious about your screenshots (and also helping out with the Actual documentation), you might want to consider tools created explicitly for taking screenshots and having good annotation support. This list is not an endorsement from the Actual White Label project team but is meant as a starting point for such tools.
 
 **For Windows and Mac**:
 

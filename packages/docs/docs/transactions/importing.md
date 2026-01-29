@@ -4,7 +4,7 @@ There are various ways to get transactions into Actual.
 
 ## Linked Bank Import
 
-Actual Budget supports [linking your bank accounts](/docs/advanced/bank-sync.md) to sync using SimpleFIN, GoCardless or Pluggy.ai.
+Actual White Label supports [linking your bank accounts](/docs/advanced/bank-sync.md) to sync using SimpleFIN, GoCardless or Pluggy.ai.
 
 There are also [community projects](/docs/community-repos.md) that implement bank syncing.
 

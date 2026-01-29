@@ -10,7 +10,7 @@ hide_table_of_contents: false
 Hello budgeters!
 
 This is the start of the series **Actual Versus**!
-Today we will be comparing Actual Budget to YNAB (You Need a Budget).
+Today we will be comparing Actual White Label to YNAB (You Need a Budget).
 
 YNAB is the longstanding heavyweight in the envelope budgeting space. It was one of the originals.
 Lets see how Actual stacks up!
@@ -29,7 +29,7 @@ Along with this blog post you can look around at our [documentation](../../docs)
 - Actual uses **envelope budgeting**, same as YNAB.
 - Actual is **free** for the base app and all updates. Hosting or optional bank syncing may have a fee depending on how you set up Actual.
 - Actual can run on all devices **online or offline**, and can sync between devices if you set up a sync server.
-- Your **data is yours** if you use Actual Budget, where with YNAB you have no control over your data
+- Your **data is yours** if you use Actual White Label, where with YNAB you have no control over your data
 
 ## Running the Applications
 
@@ -200,4 +200,4 @@ The two apps are different and have their own pros and cons.
 If you would like a different perspective, from a recent YNAB user, check out [this write up](https://samw.dev/2024/07/01/actual-for-ynab.html).
 It goes in depth on some of the differences between the two applications and some benefits, drawbacks, and considerations if someone were to migrate from YNAB to Actual.
 
-[^1] A portion of the cost to host on PikaPods is donated to the Actual Budget Project. With that said, PikaPods is a very simple, and cost-effective way to host your server.
+[^1] A portion of the cost to host on PikaPods is donated to the Actual White Label Project. With that said, PikaPods is a very simple, and cost-effective way to host your server.

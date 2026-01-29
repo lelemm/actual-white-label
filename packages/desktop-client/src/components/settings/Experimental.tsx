@@ -152,13 +152,6 @@ function ServerFeatureToggle({
 export function ExperimentalFeatures() {
   const [expanded, setExpanded] = useState(false);
 
-  const goalTemplatesEnabled = useFeatureFlag('goalTemplatesEnabled');
-  const goalTemplatesUIEnabled = useFeatureFlag('goalTemplatesUIEnabled');
-  const showGoalTemplatesUI =
-    goalTemplatesUIEnabled ||
-    (goalTemplatesEnabled &&
-      localStorage.getItem('devEnableGoalTemplatesUI') === 'true');
-
   const showServerPrefs =
     localStorage.getItem('devEnableServerPrefs') === 'true';
 
@@ -167,59 +160,11 @@ export function ExperimentalFeatures() {
       primaryAction={
         expanded ? (
           <View style={{ gap: '1em' }}>
-            <FeatureToggle flag="goalTemplatesEnabled">
-              <Trans>Goal templates</Trans>
-            </FeatureToggle>
-            {showGoalTemplatesUI && (
-              <View style={{ paddingLeft: 22 }}>
-                <FeatureToggle flag="goalTemplatesUIEnabled">
-                  <Trans>Subfeature: Budget automations UI</Trans>
-                </FeatureToggle>
-              </View>
-            )}
-            <FeatureToggle
-              flag="actionTemplating"
-              feedbackLink="https://github.com/actualbudget/actual/issues/3606"
-            >
-              <Trans>Rule action templating</Trans>
-            </FeatureToggle>
-            <FeatureToggle
-              flag="formulaMode"
-              feedbackLink="https://github.com/actualbudget/actual/issues/5949"
-            >
-              <Trans>Excel formula mode (Formula cards & Rule formulas)</Trans>
-            </FeatureToggle>
-            <FeatureToggle
-              flag="currency"
-              feedbackLink="https://github.com/actualbudget/actual/issues/5191"
-            >
-              <Trans>Currency support</Trans>
-            </FeatureToggle>
-
-            <FeatureToggle
-              flag="crossoverReport"
-              feedbackLink="https://github.com/actualbudget/actual/issues/6134"
-            >
-              <Trans>Crossover Report</Trans>
-            </FeatureToggle>
-            <FeatureToggle
-              flag="customThemes"
-              feedbackLink="https://github.com/actualbudget/actual/issues/6607"
-            >
+            <FeatureToggle flag="customThemes">
               <Trans>Custom themes</Trans>
             </FeatureToggle>
-            <FeatureToggle
-              flag="budgetAnalysisReport"
-              feedbackLink="https://github.com/actualbudget/actual/pull/6137"
-            >
-              <Trans>Budget Analysis Report</Trans>
-            </FeatureToggle>
             {showServerPrefs && (
-              <ServerFeatureToggle
-                prefName="flags.plugins"
-                disableToggle
-                feedbackLink="https://github.com/actualbudget/actual/issues/6742"
-              >
+              <ServerFeatureToggle prefName="flags.plugins" disableToggle>
                 <Trans>Client-Side plugins (soon)</Trans>
               </ServerFeatureToggle>
             )}

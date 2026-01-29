@@ -1,6 +1,6 @@
 # Roadmap for new users
 
-Welcome to Actual Budget, a delightful budgeting tool that meets you wherever you are in your financial journey.
+Welcome to Actual White Label, a delightful budgeting tool that meets you wherever you are in your financial journey.
 
 Our documentation is plentiful; getting started on the right track can be overwhelming unless you know where you are going.
 
@@ -26,7 +26,7 @@ you can [download the stand-alone software](https://github.com/actualbudget/actu
 
 In this case, you can use a service provider called PikaPods. Setup only takes a few minutes.
 We have written a thorough [step-by-step guide for PikaPods](/docs/install/pikapods).
-However, if you are adventurous or somewhat technical, please go directly to the [Actual Budget setup in PikaPod](https://www.pikapods.com/pods?run=actual).
+However, if you are adventurous or somewhat technical, please go directly to the [Actual White Label setup in PikaPod](https://www.pikapods.com/pods?run=actual).
 
 ## I am technical and have no issues running a service on my own.
 

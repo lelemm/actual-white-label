@@ -8,7 +8,6 @@ import { type TFunction } from 'i18next';
 
 import { Setting } from './UI';
 
-import { Link } from '@desktop-client/components/common/Link';
 import { useGlobalPref } from '@desktop-client/hooks/useGlobalPref';
 import { availableLanguages, setI18NextLanguage } from '@desktop-client/i18n';
 
@@ -58,32 +57,12 @@ export function LanguageSettings() {
         {isEnabled ? (
           <Trans>
             <strong>Language</strong> is the display language of all text.
-            Please note that no warranty is provided for the accuracy or
-            completeness of non-English translations. If you encounter a
-            translation error, feel free to make a suggestion on{' '}
-            <Link
-              variant="external"
-              to={
-                'https://hosted.weblate.org/projects/actualbudget/actual/' +
-                (language ?? '')
-              }
-              linkColor="purple"
-            >
-              Weblate
-            </Link>
-            .
+            Translations are maintained in this repository (en and pt-BR).
           </Trans>
         ) : (
           <Trans>
-            <strong>Language</strong> support is not available. Please follow
-            the instructions{' '}
-            <Link
-              variant="external"
-              to="https://actualbudget.org/docs/install/build-from-source#translations"
-            >
-              here
-            </Link>{' '}
-            to add missing translation files.
+            <strong>Language</strong> support is not available. Translation
+            files (locale/*.json) are version controlled in this repository.
           </Trans>
         )}
       </Text>

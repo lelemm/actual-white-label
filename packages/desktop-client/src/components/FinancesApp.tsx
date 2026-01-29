@@ -18,7 +18,9 @@ import { UserAccessPage } from './admin/UserAccess/UserAccessPage';
 import { CommandBar } from './CommandBar';
 import { GlobalKeys } from './GlobalKeys';
 import { MobileNavTabs } from './mobile/MobileNavTabs';
+import { NotesTable } from './notes/NotesTable';
 import { Notifications } from './Notifications';
+import { ProductsList } from './products/ProductsList';
 import { NarrowAlternate, WideComponent } from './responsive';
 import { useMultiuserEnabled } from './ServerContext';
 import { Settings } from './settings';
@@ -160,7 +162,7 @@ export function FinancesApp() {
               button: {
                 title: t('Open changelog'),
                 action: () => {
-                  window.open('https://actualbudget.org/docs/releases');
+                  window.open('https://github.com/lelemm/actual-white-label/releases');
                 },
               },
               onClose: () => {
@@ -231,6 +233,8 @@ export function FinancesApp() {
               <Routes>
                 <Route path="/" element={<Navigate to="/settings" replace />} />
 
+                <Route path="/products" element={<ProductsList />} />
+                <Route path="/notes" element={<NotesTable />} />
                 <Route
                   path="/rules"
                   element={<NarrowAlternate name="Rules" />}
@@ -273,6 +277,8 @@ export function FinancesApp() {
 
             <Routes>
               <Route path="/settings" element={<MobileNavTabs />} />
+              <Route path="/products" element={<MobileNavTabs />} />
+              <Route path="/notes" element={<MobileNavTabs />} />
               <Route path="/rules" element={<MobileNavTabs />} />
               <Route path="*" element={null} />
             </Routes>

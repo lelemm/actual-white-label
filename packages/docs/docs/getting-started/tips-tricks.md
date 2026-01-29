@@ -102,7 +102,7 @@ This only controls the _maximum_ number of months. If the app is too small to re
 
 ## Scramble and Hide Data {#scramble-hide}
 
-Actual Budget includes a privacy filter to help you obfuscate sensitive _amounts_ on screen.
+Actual White Label includes a privacy filter to help you obfuscate sensitive _amounts_ on screen.
 
 :::important
 The privacy filter is visual only: it does not encrypt, delete, or alter your saved data or exports.

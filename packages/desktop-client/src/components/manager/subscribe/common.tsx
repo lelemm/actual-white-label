@@ -111,7 +111,8 @@ export function Title({ text }: TitleProps) {
       style={{
         fontSize: 40,
         fontWeight: 700,
-        color: theme.pageTextPositive,
+        // Use a neutral headline color; accent lives in the background/pattern.
+        color: theme.pageTextDark,
         marginBottom: 20,
       }}
     >

@@ -33,3 +33,7 @@ CREATE TABLE rules
 CREATE TABLE preferences
    (id TEXT PRIMARY KEY,
     value TEXT);
+
+-- Spreadsheet cache tables (used for caching spreadsheet calculations)
+CREATE TABLE kvcache (key TEXT PRIMARY KEY, value TEXT);
+CREATE TABLE kvcache_key (id INTEGER PRIMARY KEY, key REAL);

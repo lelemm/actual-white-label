@@ -700,7 +700,7 @@ export function FileSelection({
             <Trans>Create new file</Trans>
           </Button>
 
-          {isNonProductionEnvironment() && (
+          {/* {isNonProductionEnvironment() && (
             <Button
               variant="primary"
               onPress={() => onCreate({ testMode: true })}
@@ -711,7 +711,7 @@ export function FileSelection({
             >
               <Trans>Create test file</Trans>
             </Button>
-          )}
+          )} */}
         </View>
       )}
     </View>

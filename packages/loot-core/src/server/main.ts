@@ -18,12 +18,15 @@ import { app as authApp } from './auth/app';
 import * as db from './db';
 import * as encryption from './encryption';
 import { app as encryptionApp } from './encryption/app';
+import { registerEntityTypes } from './entity-types';
 import { app as filesApp } from './files/app';
 import { app } from './main-app';
 import { mutator, runHandler } from './mutators';
+import { app as notesApp } from './notes/app';
 import { get } from './post';
 import { app as preferencesApp } from './preferences/app';
 import * as prefs from './prefs';
+import { app as productsApp } from './products/app';
 import { app as rulesApp } from './rules/app';
 import { getServer, setServer } from './server-config';
 import { app as spreadsheetApp } from './spreadsheet/app';
@@ -122,6 +125,8 @@ app.combine(
   syncApp,
   filesApp,
   encryptionApp,
+  productsApp,
+  notesApp,
 );
 
 export function getDefaultDocumentDir() {
@@ -160,6 +165,9 @@ export async function initApp(isDev, socketName) {
   await sqlite.init();
   await Promise.all([asyncStorage.init(), fs.init()]);
   await setupDocumentsDir();
+
+  // Register entity types for rules system
+  registerEntityTypes();
 
   const keysStr = await asyncStorage.getItem('encrypt-keys');
   if (keysStr) {
@@ -248,6 +256,9 @@ export async function init(config: InitConfig) {
   await sqlite.init();
   await Promise.all([asyncStorage.init({ persist: false }), fs.init()]);
   fs._setDocumentDir(dataDir || process.cwd());
+
+  // Register entity types for rules system
+  registerEntityTypes();
 
   if (serverURL) {
     setServer(serverURL);

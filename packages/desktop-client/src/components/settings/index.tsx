@@ -15,7 +15,6 @@ import { isElectron } from 'loot-core/shared/environment';
 
 import { AuthSettings } from './AuthSettings';
 import { Backups } from './Backups';
-import { BudgetTypeSettings } from './BudgetTypeSettings';
 import { CurrencySettings } from './Currency';
 import { EncryptionSettings } from './Encryption';
 import { ExperimentalFeatures } from './Experimental';
@@ -38,10 +37,8 @@ import { MOBILE_NAV_HEIGHT } from '@desktop-client/components/mobile/MobileNavTa
 import { Page } from '@desktop-client/components/Page';
 import { useServerVersion } from '@desktop-client/components/ServerContext';
 import { closeFile } from '@desktop-client/files/filesSlice';
-import { useFeatureFlag } from '@desktop-client/hooks/useFeatureFlag';
 import { useGlobalPref } from '@desktop-client/hooks/useGlobalPref';
 import { useMetadataPref } from '@desktop-client/hooks/useMetadataPref';
-import { useSyncedPref } from '@desktop-client/hooks/useSyncedPref';
 import { loadPrefs } from '@desktop-client/prefs/prefsSlice';
 import { useDispatch, useSelector } from '@desktop-client/redux';
 
@@ -58,8 +55,7 @@ function About() {
     <Setting>
       <Text>
         <Trans>
-          <strong>Actual</strong> is a super fast privacy-focused app for
-          managing your finances.
+          <strong>Actual</strong> is a super fast privacy-focused app for building your own solutions.
         </Trans>
       </Text>
       <View
@@ -90,7 +86,7 @@ function About() {
         {notifyWhenUpdateIsAvailable && versionInfo?.isOutdated ? (
           <Link
             variant="external"
-            to="https://actualbudget.org/docs/releases"
+            to="https://github.com/lelemm/actual-white-label/releases"
             linkColor="purple"
           >
             <Trans>New version available: {versionInfo.latestVersion}</Trans>
@@ -105,7 +101,7 @@ function About() {
         <Text>
           <Link
             variant="external"
-            to="https://actualbudget.org/docs/releases"
+            to="https://github.com/lelemm/actual-white-label/releases"
             linkColor="purple"
           >
             <Trans>Release Notes</Trans>
@@ -143,15 +139,15 @@ function AdvancedAbout() {
     <Setting>
       <Text>
         <Trans>
-          <strong>IDs</strong> are the names Actual uses to identify your budget
+          <strong>IDs</strong> are the names the app uses to identify your file
           internally. There are several different IDs associated with your
-          budget. The Budget ID is used to identify your budget file. The Sync
-          ID is used to access the budget on the server.
+          file. The File ID is used to identify your file. The Sync ID is used
+          to access the file on the server.
         </Trans>
       </Text>
       <Text>
         <Trans>
-          <IDName>Budget ID:</IDName> {{ budgetId }}
+          <IDName>File ID:</IDName> {{ budgetId }}
         </Trans>
       </Text>
       <Text style={{ color: theme.pageText }}>
@@ -175,9 +171,6 @@ export function Settings() {
   const [floatingSidebar] = useGlobalPref('floatingSidebar');
   const [fileName] = useMetadataPref('fileName');
   const dispatch = useDispatch();
-  const isCurrencyExperimentalEnabled = useFeatureFlag('currency');
-  const [_, setDefaultCurrencyCodePref] = useSyncedPref('defaultCurrencyCode');
-
   const onCloseBudget = () => {
     dispatch(closeFile());
   };
@@ -190,12 +183,6 @@ export function Settings() {
     dispatch(loadPrefs());
     return () => unlisten();
   }, [dispatch]);
-
-  useEffect(() => {
-    if (!isCurrencyExperimentalEnabled) {
-      setDefaultCurrencyCodePref('');
-    }
-  }, [isCurrencyExperimentalEnabled, setDefaultCurrencyCodePref]);
 
   const { isNarrowWidth } = useResponsive();
 
@@ -243,11 +230,10 @@ export function Settings() {
         <About />
         <ThemeSettings />
         <FormatSettings />
-        {isCurrencyExperimentalEnabled && <CurrencySettings />}
+        <CurrencySettings />
         <LanguageSettings />
         <AuthSettings />
         <EncryptionSettings />
-        <BudgetTypeSettings />
         {isElectron() && <Backups />}
         <ExportBudget />
         <AdvancedToggle>

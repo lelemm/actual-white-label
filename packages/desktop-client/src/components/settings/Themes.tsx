@@ -9,7 +9,7 @@ import { tokens } from '@actual-app/components/tokens';
 import { View } from '@actual-app/components/view';
 import { css } from '@emotion/css';
 
-import { type DarkTheme, type Theme } from 'loot-core/types/prefs';
+import { type Theme } from 'loot-core/types/prefs';
 
 import { ThemeInstaller } from './ThemeInstaller';
 import { Column, Setting } from './UI';
@@ -18,9 +18,7 @@ import { useSidebar } from '@desktop-client/components/sidebar/SidebarProvider';
 import { useFeatureFlag } from '@desktop-client/hooks/useFeatureFlag';
 import { useGlobalPref } from '@desktop-client/hooks/useGlobalPref';
 import {
-  darkThemeOptions,
   themeOptions,
-  usePreferredDarkTheme,
   useTheme,
 } from '@desktop-client/style';
 import {
@@ -35,7 +33,6 @@ export function ThemeSettings() {
   const { t } = useTranslation();
   const sidebar = useSidebar();
   const [theme, switchTheme] = useTheme();
-  const [darkTheme, switchDarkTheme] = usePreferredDarkTheme();
   const [showInstaller, setShowInstaller] = useState(false);
 
   const customThemesEnabled = useFeatureFlag('customThemes');
@@ -149,22 +146,6 @@ export function ThemeSettings() {
                   })}
                 />
               </Column>
-              {theme === 'auto' && !installedTheme && (
-                <Column title={t('Dark theme')}>
-                  <Select<DarkTheme>
-                    onChange={value => {
-                      switchDarkTheme(value);
-                    }}
-                    value={darkTheme}
-                    options={darkThemeOptions}
-                    className={css({
-                      '&[data-hovered]': {
-                        backgroundColor: themeStyle.buttonNormalBackgroundHover,
-                      },
-                    })}
-                  />
-                </Column>
-              )}
             </View>
           )}
 

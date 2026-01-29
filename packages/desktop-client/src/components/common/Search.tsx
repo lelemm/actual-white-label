@@ -47,7 +47,7 @@ export function Search({
         width,
         height,
         flex: '',
-        borderColor: isInModal ? undefined : 'transparent',
+        borderColor: isInModal ? undefined : theme.formInputBorder,
         backgroundColor: isInModal ? undefined : theme.formInputBackground,
         ...style,
         ...(focused && {

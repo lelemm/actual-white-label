@@ -1,7 +1,6 @@
 import { forwardRef, useRef } from 'react';
 import { useHotkeys } from 'react-hotkeys-hook';
 import { Trans, useTranslation } from 'react-i18next';
-import { useLocation } from 'react-router';
 
 import { Button } from '@actual-app/components/button';
 import { SvgHelp } from '@actual-app/components/icons/v2';
@@ -10,7 +9,6 @@ import { Popover } from '@actual-app/components/popover';
 import { SpaceBetween } from '@actual-app/components/space-between';
 import { useToggle } from 'usehooks-ts';
 
-import { useFeatureFlag } from '@desktop-client/hooks/useFeatureFlag';
 import { pushModal } from '@desktop-client/modals/modalsSlice';
 import { useDispatch } from '@desktop-client/redux';
 
@@ -38,11 +36,7 @@ function openDocsForCurrentPage() {
   window.Actual.openURLInBrowser(getPageDocs(window.location.pathname));
 }
 
-type HelpMenuItem =
-  | 'docs'
-  | 'discord'
-  | 'keyboard-shortcuts'
-  | 'goal-templates';
+type HelpMenuItem = 'docs' | 'discord' | 'keyboard-shortcuts';
 
 type HelpButtonProps = {
   onPress?: () => void;
@@ -72,13 +66,11 @@ const HelpButton = forwardRef<HTMLButtonElement, HelpButtonProps>(
 HelpButton.displayName = 'HelpButton';
 
 export const HelpMenu = () => {
-  const showGoalTemplates = useFeatureFlag('goalTemplatesEnabled');
   const { t } = useTranslation();
   const [isMenuOpen, toggleMenuOpen, setMenuOpen] = useToggle();
   const menuButtonRef = useRef(null);
 
   const dispatch = useDispatch();
-  const page = useLocation().pathname;
 
   const handleItemSelect = (item: HelpMenuItem) => {
     switch (item) {
@@ -124,9 +116,6 @@ export const HelpMenu = () => {
               text: t('Community support (Discord)'),
             },
             { name: 'keyboard-shortcuts', text: t('Keyboard shortcuts') },
-            ...(showGoalTemplates && page === '/budget'
-              ? [{ name: 'goal-templates', text: t('Goal templates') }]
-              : []),
           ]}
         />
       </Popover>

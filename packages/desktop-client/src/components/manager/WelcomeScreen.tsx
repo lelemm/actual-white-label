@@ -31,37 +31,12 @@ export function WelcomeScreen() {
       <View style={{ overflowY: 'auto' }}>
         <Paragraph>
           <Trans>
-            Actual is a personal finance tool that focuses on beautiful design
-            and a slick user experience.{' '}
+            Actual White Label is a white label app framework for building
+            local-first app solutions. It focuses on beautiful design and a slick
+            user experience.{' '}
             <strong>Editing your data should be as fast as possible.</strong> On
             top of that, we want to provide powerful tools to allow you to do
             whatever you want with your data.
-          </Trans>
-        </Paragraph>
-        <Paragraph>
-          <Trans>
-            Currently, Actual implements budgeting based on a{' '}
-            <Link
-              variant="external"
-              to="https://actualbudget.org/docs/budgeting/"
-              linkColor="purple"
-            >
-              monthly envelope system
-            </Link>
-            .
-          </Trans>{' '}
-          <Trans>
-            Consider taking our{' '}
-            <Link
-              variant="external"
-              to="https://actualbudget.org/docs/tour/"
-              linkColor="purple"
-            >
-              guided tour
-            </Link>{' '}
-            to help you get your bearings, and check out the rest of the
-            documentation while you're there to learn more about advanced
-            topics.
           </Trans>
         </Paragraph>
         <Paragraph style={{ color: theme.pageTextLight }}>
@@ -88,9 +63,9 @@ export function WelcomeScreen() {
             gap: 10,
           }}
         >
-          <Button onPress={() => dispatch(createFile({ testMode: true }))}>
+          {/* <Button onPress={() => dispatch(createFile({ testMode: true }))}>
             <Trans>View demo</Trans>
-          </Button>
+          </Button> */}
           <Button
             variant="primary"
             autoFocus

@@ -1,7 +1,7 @@
 # Connecting Your Bank
 
 We are excited to offer optional bank integration in Actual.
-Here are a couple of considerations to know about before making the decision to use bank sync in your installation of Actual Budget.
+Here are a couple of considerations to know about before making the decision to use bank sync in your installation of Actual White Label.
 
 - This integration relies on you providing your own API credentials that you will need to get by signing up with the service provider and Generate Keys and Secrets that will be used in Actual.
 

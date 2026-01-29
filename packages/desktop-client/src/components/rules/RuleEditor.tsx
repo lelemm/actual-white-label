@@ -60,7 +60,6 @@ import { FormulaActionEditor } from './FormulaActionEditor';
 import { FinancialText } from '@desktop-client/components/FinancialText';
 import { BetweenAmountInput } from '@desktop-client/components/util/AmountInput';
 import { useDateFormat } from '@desktop-client/hooks/useDateFormat';
-import { useFeatureFlag } from '@desktop-client/hooks/useFeatureFlag';
 import { useFormat } from '@desktop-client/hooks/useFormat';
 import {
   SelectedProvider,
@@ -298,10 +297,10 @@ function ConditionEditor({
   } = condition;
 
   const translatedConditions = useMemo(() => {
-    // Use dynamic fields from entity type if available, otherwise fall back to legacy fields
+    // Use dynamic fields from entity type only; show empty until entity type is selected
     const fields = entityFields?.fields?.length
       ? entityFields.fields.map(f => [f.name, f.displayName])
-      : conditionFields;
+      : [];
 
     const retValue = [...fields];
 
@@ -448,12 +447,6 @@ function ActionEditor({
   const templated = options?.template !== undefined;
   const hasFormula = options?.formula !== undefined;
 
-  // Even if the feature flag is disabled, we still want to be able to turn off templating
-  const actionTemplating = useFeatureFlag('actionTemplating');
-  const formulaMode = useFeatureFlag('formulaMode');
-  const isTemplatingEnabled = actionTemplating || templated;
-  const isFormulaEnabled = formulaMode || hasFormula;
-
   // Use dynamic fields from entity type if available, otherwise fallback to legacy fields
   const availableFields = entityFields?.fields?.length
     ? entityFields.fields.map(f => [f.name, f.displayName])
@@ -462,8 +455,7 @@ function ActionEditor({
       : getActionFields();
 
   const fields = availableFields.filter(
-    ([s]) =>
-      actionTemplating || formulaMode || !s.includes('_name') || field === s,
+    ([s]) => !s.includes('_name') || field === s,
   );
 
   return (
@@ -505,7 +497,7 @@ function ActionEditor({
             </View>
           </View>
           {/*Due to that these fields have id's as value it is not helpful to have templating here*/}
-          {isFormulaEnabled &&
+          {hasFormula &&
             ['payee', 'category', 'account'].indexOf(field) === -1 && (
               <Button
                 variant="bare"
@@ -554,7 +546,7 @@ function ActionEditor({
                 )}
               </Button>
             )}
-          {isTemplatingEnabled &&
+          {templated &&
             ['payee', 'category', 'account'].indexOf(field) === -1 && (
               <Button
                 variant="bare"

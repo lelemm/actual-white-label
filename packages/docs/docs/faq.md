@@ -10,9 +10,9 @@
   it is much easier to not pull in historical data. First, set up your account(s) with a correct opening balance on a recent date, then set up bank sync. Only
   transactions after the opening balance date will be synced, making reconciliation easy.
 
-- **Q.** _Can I import my Actual Budget from the hosted instance of Actual to my Self Hosted version_.
+- **Q.** _Can I import my Actual White Label from the hosted instance of Actual to my Self Hosted version_.
 
-  **A.** The hosted subscription service was shut down in 2024, but if you are still using the old Actual Budget Desktop App, we have a [migration guide in place for this](/docs/migration/#migration-from-the-old-actual-budget-desktop-app).
+  **A.** The hosted subscription service was shut down in 2024, but if you are still using the old Actual White Label Desktop App, we have a [migration guide in place for this](/docs/migration/#migration-from-the-old-actual-budget-desktop-app).
 
 - **Q.** _How do I update my version of Actual after it has been updated?_
 
@@ -63,7 +63,7 @@
 
   If you need to upload larger files, increase these values in your environment configuration. Additionally, you may need to adjust upload size settings in your reverse proxy (e.g., `client_max_body_size` in Nginx/Traefik) or managed hosting provider, as these can also enforce limits. If you're unsure how to change the limit for your setup, ask in the [community Discord](https://discord.gg/pRYNYr4W5A); other self-hosted users often share configuration snippets for their platforms.
 
-- **Q.** _Does Actual Budget have an API? What are the endpoints?_
+- **Q.** _Does Actual White Label have an API? What are the endpoints?_
 
   **A.** Actual does not have a REST API with endpoints that you can just call. However, we do have an API NPM package that allows programmatic access to the budget. It runs the UI in _headless_ mode and allows performing many of the same operations that you can perform by clicking around the UI.
 

@@ -10,7 +10,7 @@ importer. We will work with the community to help write other importers soon.
 - [Migration from YNAB4](/docs/migration/ynab4)
 - [Migration from nYNAB](/docs/migration/nynab)
 
-## Migration from the old Actual Budget Desktop App
+## Migration from the old Actual White Label Desktop App
 
 Are you coming from the original, managed Actual subscription service? That used an older desktop app version,
 which doesn't have the export button. You can also create an equivalent zip archive of your budget folder.

@@ -59,8 +59,12 @@ export async function openDatabase(id?: string) {
   }
 
   dbPath = fs.join(fs.getFileDir(id), 'db.sqlite');
-  setDatabase(await sqlite.openDatabase(dbPath));
+  const database = await sqlite.openDatabase(dbPath);
+  setDatabase(database);
 
+  // Ensure journal mode is set correctly for the platform
+  // Web platform uses MEMORY mode (set in sqlite.openDatabase)
+  // Desktop/Node can use WAL mode, but it's commented out for now
   // await execQuery('PRAGMA journal_mode = WAL');
 }
 

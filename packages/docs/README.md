@@ -1,6 +1,6 @@
-# Actual Budget Community Documentation
+# Actual White Label Community Documentation
 
-This repo is the Actual Budget community documentation website, built using [Docusaurus 3](https://docusaurus.io/), a modern static website generator.
+This repo is the Actual White Label community documentation website, built using [Docusaurus 3](https://docusaurus.io/), a modern static website generator.
 
 [Docusaurus 3](https://docusaurus.io/) uses Node.js, so if you are running Actual on your local machine, you should be able to easily run [Docusaurus 3](https://docusaurus.io/).
 
@@ -12,7 +12,7 @@ some of the [issues](https://github.com/actualbudget/actual/issues?q=is%3Aissue%
 
 ### Installation Methods
 
-Actual Budget can be installed on many different platforms. However, at this time, the official Actual Budget documentation only supports the following methods:
+Actual White Label can be installed on many different platforms. However, at this time, the official Actual White Label documentation only supports the following methods:
 
 - Local Installation (on your own machine)
   - Actual-server

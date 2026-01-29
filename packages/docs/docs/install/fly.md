@@ -163,7 +163,7 @@ fly deploy
 
 ## Cost Optimizations
 
-If you're looking to lower your monthly compute costs for Actual Budget and can accept a 5-15 second delay when starting your budgeting session, you can add this feature to your services section and re-deploy.
+If you're looking to lower your monthly compute costs for Actual White Label and can accept a 5-15 second delay when starting your budgeting session, you can add this feature to your services section and re-deploy.
 
 ```toml
 [[services]]

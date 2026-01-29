@@ -6,6 +6,7 @@ import { type File } from 'loot-core/types/file';
 import {
   type NewRuleEntity,
   type NewUserEntity,
+  type ProductEntity,
   type RuleEntity,
   type UserAccessEntity,
   type UserEntity,
@@ -254,6 +255,13 @@ export type Modal =
     }
   | {
       name: 'keyboard-shortcuts';
+    }
+  | {
+      name: 'edit-product';
+      options: {
+        product: ProductEntity;
+        onSave?: (product: ProductEntity) => void;
+      };
     }
   // More budget-specific modals removed
   // | {

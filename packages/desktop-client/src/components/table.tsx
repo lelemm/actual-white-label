@@ -45,6 +45,8 @@ import {
 } from '@desktop-client/hooks/useProperFocus';
 import { useSelectedItems } from '@desktop-client/hooks/useSelected';
 import { useSheetValue } from '@desktop-client/hooks/useSheetValue';
+
+import { Autocomplete, type AutocompleteItem } from './autocomplete/Autocomplete';
 import {
   type Binding,
   type SheetFields,
@@ -679,6 +681,69 @@ export function SelectCell({
         >
           {selected && icon}
         </CellButton>
+      )}
+    </Cell>
+  );
+}
+
+type AutocompleteOption = {
+  id: string;
+  name: string;
+};
+
+type AutocompleteCellProps = Omit<ComponentProps<typeof Cell>, 'children' | 'value'> & {
+  options: AutocompleteOption[];
+  value: string | null;
+  onUpdate: (value: string | null) => void;
+};
+
+export function AutocompleteCell({
+  value,
+  options,
+  onUpdate,
+  exposed,
+  onExpose,
+  ...props
+}: AutocompleteCellProps) {
+  const suggestions: AutocompleteItem[] = options.map(opt => ({ id: opt.id, name: opt.name }));
+
+  // Find the current selected option
+  const selectedOption = value
+    ? suggestions.find(s => s.id === value) || null
+    : null;
+
+  // Get display value (option name or empty string) for unexposed state
+  const displayValue = selectedOption ? selectedOption.name : '';
+
+  return (
+    <Cell
+      {...props}
+      value={displayValue}
+      exposed={exposed}
+      onExpose={onExpose}
+    >
+      {() => (
+        <Autocomplete
+          type="single"
+          embedded
+          strict
+          focused={exposed}
+          value={selectedOption}
+          suggestions={suggestions}
+          onSelect={(id: string | null) => {
+            onUpdate(id);
+          }}
+          clearOnBlur={false}
+          closeOnBlur={false}
+          closeOnSelect={true}
+          highlightFirst
+          inputProps={{
+            style: {
+              ...inputCellStyle,
+              width: '100%',
+            },
+          }}
+        />
       )}
     </Cell>
   );

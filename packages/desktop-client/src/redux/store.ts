@@ -18,6 +18,10 @@ import {
   reducer as modalsSliceReducer,
 } from '@desktop-client/modals/modalsSlice';
 import {
+  name as notesSliceName,
+  reducer as notesSliceReducer,
+} from '@desktop-client/notes/notesSlice';
+import {
   addNotification,
   name as notificationsSliceName,
   reducer as notificationsSliceReducer,
@@ -27,6 +31,10 @@ import {
   reducer as prefsSliceReducer,
 } from '@desktop-client/prefs/prefsSlice';
 import {
+  name as productsSliceName,
+  reducer as productsSliceReducer,
+} from '@desktop-client/products/productsSlice';
+import {
   name as usersSliceName,
   reducer as usersSliceReducer,
 } from '@desktop-client/users/usersSlice';
@@ -35,8 +43,10 @@ const rootReducer = combineReducers({
   [appSliceName]: appSliceReducer,
   [filesSliceName]: filesSliceReducer,
   [modalsSliceName]: modalsSliceReducer,
+  [notesSliceName]: notesSliceReducer,
   [notificationsSliceName]: notificationsSliceReducer,
   [prefsSliceName]: prefsSliceReducer,
+  [productsSliceName]: productsSliceReducer,
   [usersSliceName]: usersSliceReducer,
 });
 

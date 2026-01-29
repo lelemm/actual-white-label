@@ -7,22 +7,22 @@ into different physical envelopes, each representing a specific expense category
 When all the cash in an envelope was spent, no more money could be used for that category until the next budgeting
 period. This method helped people control their spending by making them aware of their financial limits.
 
-In Actual Budget, we bring this traditional system into the digital age. Instead of physical envelopes,
-Actual Budget uses categories that serve the same purpose. Each category is like a virtual envelope where you
+In Actual White Label, we bring this traditional system into the digital age. Instead of physical envelopes,
+Actual White Label uses categories that serve the same purpose. Each category is like a virtual envelope where you
 allocate a portion of your income. This modern approach not only maintains the benefits of the envelope system
 but also addresses some of its limitations.
 
 One key difference is that traditional envelope budgeting often overlooks fixed expenses like rent, mortgage,
 utility bills, and other regular payments. These fixed costs are crucial and must be accounted for to have a
-complete picture of your finances. Actual Budget ensures that every fixed or variable expense is
+complete picture of your finances. Actual White Label ensures that every fixed or variable expense is
 considered. This comprehensive approach makes AB much more effective than the traditional cash-stuffing method.
 
-A significant advantage of using Actual Budget is increased awareness of expenses.
+A significant advantage of using Actual White Label is increased awareness of expenses.
 Knowing where every penny of your money is spent is a decisive step towards financial control and stability.
 
 ## Zero-Sum Budgeting
 
-Zero-Sum budgeting[^1] is a key principle in electronic envelope budgeting systems like Actual Budget.
+Zero-Sum budgeting[^1] is a key principle in electronic envelope budgeting systems like Actual White Label.
 This approach means that all income is assigned to a specific category, leaving no money unallocated.
 This gives every unit of currency a purpose, ensuring that income is used efficiently and intentionally.
 A popular saying is all your money should have a "job".
@@ -107,9 +107,9 @@ We have a guide on what to do when it comes to [strategies for handling joint ac
 
 You can read more about these in the [returns and reimbursements guides](/docs/budgeting/returns-and-reimbursements).
 
-## How to set up and use an envelope system with Actual Budget
+## How to set up and use an envelope system with Actual White Label
 
-Learning to budget using Actual Budget is straightforward, even
+Learning to budget using Actual White Label is straightforward, even
 if you're new to budgeting. Here's a checklist for getting started:
 
 ### 1. Establish budget categories
@@ -119,7 +119,7 @@ Tailor each category to fit your specific budget and spending habits, giving you
 the system to your needs for the most accurate tracking.
 
 Common categories might include general areas such as groceries, gas, clothing, entertainment, and savings.
-Additionally, you can use Actual Budget for managing debt payments and long-term savings goals,
+Additionally, you can use Actual White Label for managing debt payments and long-term savings goals,
 ensuring all aspects of your financial life are comprehensively covered.
 
 Review the last three months of your bank statements to identify your categories. Look for recurring
@@ -163,18 +163,18 @@ budget as needed, putting you in control of your financial situation.
 With your budget now allocated, the next step is to track your spending diligently.
 This is essential for making the envelope system work effectively.
 
-Each time you make a purchase, add the spending to Actual Budget. While this might seem
+Each time you make a purchase, add the spending to Actual White Label. While this might seem
 like a lot of work initially, it will significantly increase your awareness of your spending habits,
 enabling you to make informed decisions about what and how much to spend.
 
-As you become more accustomed to this budgeting method, you can update Actual Budget less frequently,
+As you become more accustomed to this budgeting method, you can update Actual White Label less frequently,
 such as once a week. This flexibility allows you to adapt the system to your lifestyle. Additionally,
 if supported, you can set up automatic syncing with your bank to streamline the process.
 
 Here's how to do it:
 
 1. **Record every transaction**: Every time you spend money, whether it's buying groceries or paying for gas,
-   immediately enter the amount into Actual Budget under the appropriate category. This ensures that your budget
+   immediately enter the amount into Actual White Label under the appropriate category. This ensures that your budget
    is always up to date.
 2. **Analyze spending habits**: Take time each week to review your spending. This will help you identify patterns and make
    adjustments as needed. This proactive approach can prevent overspending and help you stay on track with your financial goals.
@@ -204,7 +204,7 @@ necessary adjustments.
 3. **Stay calm and flexible**: Remember, the goal of budgeting is to manage your finances effectively, not to be perfect.
    Flexibility is key. Adjusting your budget is a normal part of the process.
 
-You can also set up Actual Budget to
+You can also set up Actual White Label to
 [automatically deduct the overspending](/docs/budgeting/#rollover-negative-category-balances) from next month's funds. Be aware that
 even if you _can_ do something, it does not mean that you _should_ do it.
 
@@ -237,7 +237,7 @@ month to cover these rather than having to put up the larger amount when the bil
    These could be anything from insurance premiums to holiday gifts.
 2. **Break Down Annual Costs**: Calculate the total annual cost for each expense.
 3. **Divide into Monthly Savings**: Divide the annual cost by 12 to determine how much you need to save each month.
-4. **Create Specific Categories**: For each irregular expense, set up specific categories in Actual Budget.
+4. **Create Specific Categories**: For each irregular expense, set up specific categories in Actual White Label.
    Label them clearly, such as "Car Insurance," "Holiday Gifts," or "Home Repairs."
 5. **Allocate Funds Monthly**: Allocate the calculated amount to these categories each month. Treat this allocation
    as a fixed expense to ensure you consistently save for these future costs.
@@ -246,9 +246,9 @@ month to cover these rather than having to put up the larger amount when the bil
 arrives, you can set aside $ 200 each month. By the time the bill is due, you'll have the total amount saved and ready,
 avoiding the need to dip into savings or incur debt.
 
-## Using Actual Budget with debit cards is better than using cash
+## Using Actual White Label with debit cards is better than using cash
 
-While the traditional envelope system relies on cash, using Actual Budget with debit and credit
+While the traditional envelope system relies on cash, using Actual White Label with debit and credit
 cards offers significant advantages. Here's why using cards can be more effective:
 
 **Ease of tracking**: When you use debit or credit cards, all your transactions are automatically recorded
@@ -256,13 +256,13 @@ in your bank statement. Bank and credit card statements provide a detailed histo
 transactions, including the date, amount, and merchant. This makes it much easier to track your spending without
 having (to remember) to manually enter each transaction whenever you make a purchase or get income.
 Most financial institutions will let you export your transactions as CSV files,
-which can be [imported into Actual Budget](/docs/transactions/importing). Using cards will save you time and reduce the risk of errors.
+which can be [imported into Actual White Label](/docs/transactions/importing). Using cards will save you time and reduce the risk of errors.
 
-**Automatic import**: Actual Budget can [sync directly with your bank accounts](/docs/advanced/bank-sync).
+**Automatic import**: Actual White Label can [sync directly with your bank accounts](/docs/advanced/bank-sync).
 Every time you use your debit or credit card, the transaction details are automatically imported into
 your budget categories. You no longer need to keep physical receipts or manually log each expense.
 
-Read more about [managing credit cards](/docs/budgeting/credit-cards) with Actual Budget.
+Read more about [managing credit cards](/docs/budgeting/credit-cards) with Actual White Label.
 
 ## A detailed example of how to do Zero-Sum budgeting
 

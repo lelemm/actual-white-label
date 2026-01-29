@@ -6,11 +6,13 @@ import { listen, send } from 'loot-core/platform/client/fetch';
 import { resetSync, sync } from './app/appSlice';
 import { closeAndDownloadFile, uploadFile } from './files/filesSlice';
 import { pushModal } from './modals/modalsSlice';
+import { getNotes } from './notes/notesSlice';
 import {
   addNotification,
   type Notification,
 } from './notifications/notificationsSlice';
 import { loadPrefs } from './prefs/prefsSlice';
+import { getProducts } from './products/productsSlice';
 import { type AppStore } from './redux/store';
 import { signOut } from './users/usersSlice';
 
@@ -61,7 +63,13 @@ export function listenForSyncEvent(store: AppStore) {
         store.dispatch(loadPrefs());
       }
 
-      // Budget-specific table reloads removed for white-label version
+      if (tables.includes('notes')) {
+        store.dispatch(getNotes());
+      }
+
+      if (tables.includes('products')) {
+        store.dispatch(getProducts());
+      }
     } else if (event.type === 'error') {
       let notif: Notification | null = null;
       const learnMore = `[${t('Learn more')}](https://actualbudget.org/docs/getting-started/sync/#debugging-sync-issues)`;

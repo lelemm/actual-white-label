@@ -10,6 +10,7 @@ import { Block } from '@actual-app/components/block';
 import { theme } from '@actual-app/components/theme';
 import { View } from '@actual-app/components/view';
 
+import { accountNameStyle } from './Account';
 import { ItemContent } from './ItemContent';
 
 const fontWeight = 600;
@@ -54,6 +55,7 @@ export function SecondaryItem({
     <View style={{ flexShrink: 0, ...style }}>
       <ItemContent
         style={{
+          ...accountNameStyle,
           color: theme.sidebarItemText,
           paddingLeft: 14 + indent,
           fontWeight: bold ? fontWeight : null,

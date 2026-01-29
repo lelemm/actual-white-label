@@ -1,9 +1,9 @@
 ---
-title: Contributing to Actual Budget
+title: Contributing to Actual White Label
 ---
 
-So, you want to get stuck in and help out with existing issues in Actual Budget or develop a feature of your own. That's great and we really appreciate it!
-We have created this document to signpost you to some of the key areas that will be of interest when developing for Actual Budget.
+So, you want to get stuck in and help out with existing issues in Actual White Label or develop a feature of your own. That's great and we really appreciate it!
+We have created this document to signpost you to some of the key areas that will be of interest when developing for Actual White Label.
 
 As always, if you need any help or want something clarified, jump into the Discord and we will try our best to help you out.
 
@@ -78,11 +78,11 @@ For more details, see the [Development Setup Guide](./development-setup.md) and 
 
 ### The Project Layout
 
-The layout of the codebase in Actual Budget takes a bit of getting used to and finding things at first can be a little tricky. We have put together a help [document](./project-details/index.md) that shows the structure of the project. While this isn't 100% complete it will give you a good starting point for your development.
+The layout of the codebase in Actual White Label takes a bit of getting used to and finding things at first can be a little tricky. We have put together a help [document](./project-details/index.md) that shows the structure of the project. While this isn't 100% complete it will give you a good starting point for your development.
 
 ### Working on Existing Issues
 
-Existing issues are a good place to start, especially if you want to contribute to Actual Budget but don't know where to start, some of the things to be aware of are:
+Existing issues are a good place to start, especially if you want to contribute to Actual White Label but don't know where to start, some of the things to be aware of are:
 
 1. All issues are open to be worked on by anyone.
 2. Working on the highest rated [feature requests](https://github.com/actualbudget/actual/issues?q=label%3A%22needs+votes%22+sort%3Areactions-%2B1-desc+) would also be appreciated.
@@ -90,7 +90,7 @@ Existing issues are a good place to start, especially if you want to contribute 
 
 ### Submitting an Idea for Something you Want to Work On
 
-Okay, so you have an idea for something that you think would be great in Actual Budget, but how do you pitch it to the community so that all your hard work is not wasted?
+Okay, so you have an idea for something that you think would be great in Actual White Label, but how do you pitch it to the community so that all your hard work is not wasted?
 
 If the feature is relatively small, feel free to start the discussion by opening a PR. However, if you want to work on a larger change/feature, please open an issue or comment on an existing issue for the feature first. This lets the maintainers make sure your approach fits well both with the technical and ideological architecture of the project.
 
@@ -142,7 +142,7 @@ Try to phrase your message as a command, e.g. "Add option to include exchange ra
 
 The goal of the UI is to be minimalistic, but expose more advanced features progressively as the user interacts with the product (for example: the notes button is not visible by default if an account has no notes, but it becomes persistent visible if there are notes). We advocate for a similar approach in other places too. We are against adding a button/user setting for every little piece of UI (sizes, paddings, margins, etc.) as that goes against this simple design philosophy.
 
-The settings screen needs to also remain a place where core settings lives, we don't really want to have a myriad of options in here for each and every setting within the UI, doing that makes the code un-manageable for future contributors and clutters up and confuses things for the users of Actual Budget.
+The settings screen needs to also remain a place where core settings lives, we don't really want to have a myriad of options in here for each and every setting within the UI, doing that makes the code un-manageable for future contributors and clutters up and confuses things for the users of Actual White Label.
 
 ## Additional Resources
 

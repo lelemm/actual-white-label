@@ -606,7 +606,7 @@ Update fields of a rule. `fields` can specify any field described in [`Schedule`
 
 <Method name="init" args={[{ properties: [{ name: 'config', type: 'InitConfig' }] }]} returns="Promise<void>" />
 
-Initializes the API by connecting to an Actual Budget server.
+Initializes the API by connecting to an Actual White Label server.
 
 #### `shutdown`
 

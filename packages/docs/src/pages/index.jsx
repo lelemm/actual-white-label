@@ -7,9 +7,9 @@ import Button from '../components/Button';
 import classes from './index.module.css';
 
 export default function Hello() {
-  const title = 'Your Finances — made simple';
+  const title = 'Build Local-First Apps — Made Simple';
   const pageDescription =
-    'Actual Budget is a super fast and privacy-focused app for managing your finances. At its heart is the well proven and much loved Envelope Budgeting methodology.';
+    'Actual White Label is a white label app framework for building local-first app solutions. It provides a super fast and privacy-focused foundation with powerful synchronization capabilities.';
 
   return (
     <Layout
@@ -20,11 +20,11 @@ export default function Hello() {
       <img alt="" src="/img/homepage/hero-bg.svg" className={classes.heroBg} />
 
       <div className={`${classes.main} ${classes.container}`}>
-        <h1>Your Finances — made simple</h1>
+        <h1>Build Local-First Apps — Made Simple</h1>
         <p className={classes.heroText}>
-          Actual Budget is a super fast and privacy-focused app for managing
-          your finances. At its heart is the well proven and much loved Envelope
-          Budgeting methodology.
+          Actual White Label is a white label app framework for building
+          local-first app solutions. It provides a super fast and privacy-focused
+          foundation with powerful synchronization capabilities.
           <br />
           <strong>You own your data</strong> and can do whatever you want with
           it. Featuring multi-device sync, optional end-to-end encryption and so
@@ -55,7 +55,7 @@ export default function Hello() {
               light: '/img/homepage/actual-main-budget.webp',
               dark: '/img/homepage/actual-main-budget-dark.webp',
             }}
-            alt="Actual Budget"
+            alt="Actual White Label"
           />
           <Button
             to="https://demo.actualbudget.org/"
@@ -69,13 +69,13 @@ export default function Hello() {
         </div>
 
         <MediumFeature
-          title="Be involved in your financial decisions"
+          title="Build apps with full control"
           src="/img/homepage/superpowers.svg"
         >
-          Automated finance tools are great, except when they aren't. We provide
-          you with tools that are quick to use, but ultimately{' '}
-          <strong>you are in control</strong>. We help you learn, instead of
-          dictating.
+          Actual White Label provides you with a powerful framework that is quick
+          to use, but ultimately{' '}
+          <strong>you are in control</strong>. Build your own local-first
+          applications with complete ownership of your data and infrastructure.
         </MediumFeature>
 
         <MediumFeature
@@ -92,9 +92,9 @@ export default function Hello() {
             />
           }
         >
-          A <strong>beautifully designed interface</strong> is fine-tuned to get
-          out of your way and make it as fast as possible to explore your
-          finances.
+          A <strong>beautifully designed framework</strong> is fine-tuned to get
+          out of your way and make it as fast as possible to build and deploy
+          local-first applications.
         </MediumFeature>
 
         <MediumFeature
@@ -112,41 +112,40 @@ export default function Hello() {
 
         <div id="features" />
         <BigFeature
-          title="Powerful budgeting made simple"
+          title="Powerful local-first architecture"
           srcLight="/img/homepage/actual-main-budget.webp"
           srcDark="/img/homepage/actual-main-budget-dark.webp"
         >
           <strong>
-            Save hundreds of dollars a year (at least!) by tracking your
-            spending.
+            Build applications that work offline-first with seamless
+            synchronization.
           </strong>{' '}
-          Based on tried and true methods, our budgeting system is based off of
-          your real income instead of made up numbers. This makes you face your
-          real spending, and clearly shows how much you are saving each month.
-          We make this process as simple as possible.{' '}
-          <Link to="/docs/budgeting/">Learn&nbsp;more</Link>
+          Actual White Label provides a robust foundation for building
+          local-first applications. Your data lives on the device, ensuring
+          functionality without a network connection, while optional sync keeps
+          everything in sync across devices.{' '}
+          <Link to="/docs/getting-started/">Learn&nbsp;more</Link>
         </BigFeature>
 
         <BigFeature
-          title="The fastest way to manage transactions"
+          title="Fast and efficient data management"
           srcLight="/img/homepage/actual-main-transaction.webp"
           srcDark="/img/homepage/actual-main-transaction-dark.webp"
         >
-          Breeze through your transactions and update them easily with a
-          streamlined, minimal interface. Categorizing your transactions
-          correctly is important and we've optimized this process. Manage split
-          transactions and transfers all in the same editor.
+          Build applications with streamlined, minimal interfaces that make data
+          entry and management as fast as possible. The framework is optimized
+          for performance and provides powerful tools for managing your data
+          efficiently.
         </BigFeature>
 
         <BigFeature
-          title="Oh my, the reports"
+          title="Extensible and customizable"
           srcLight="/img/homepage/actual-report-dashboard-light.webp"
           srcDark="/img/homepage/actual-report-dashboard-dark.webp"
         >
-          Intuitive reports give you a quick way to learn about your finances.
-          By default, we include net worth and cash flow reports. Actual also
-          includes a powerful custom report engine to design your own reports to
-          fit your needs.
+          The framework includes powerful extension points and customization
+          options. Build your own features, reports, and integrations on top of
+          the solid foundation provided by Actual White Label.
         </BigFeature>
       </div>
 
@@ -164,52 +163,55 @@ export default function Hello() {
           <SmallFeature
             title="Everything in one place"
             icon={icons.smileyBlessedAlternate}
-            learnMore="/docs/accounts/"
+            learnMore="/docs/getting-started/"
           >
-            Add all of your accounts and track everything in one place. Get
-            valuable information like net worth from all your accounts together.
+            Build applications that centralize your data in one place. The
+            framework provides a unified data model that you can extend for your
+            specific needs.
           </SmallFeature>
           <SmallFeature
             title="Syncing across devices"
             icon={icons.synchronizeArrows1}
-            learnMore="/docs/accounts/"
+            learnMore="/docs/getting-started/sync"
           >
-            Self-host our syncing service. It's easy to set up, but uses
+            Self-host the syncing service. It's easy to set up, but uses
             sophisticated distributed systems technology to sync changes across
             any number of devices.
           </SmallFeature>
           <SmallFeature
-            title="Bank Sync"
+            title="Extensible integrations"
             icon={icons.bank}
-            learnMore="/docs/advanced/bank-sync"
+            learnMore="/docs/getting-started/"
           >
-            Actual has built in support for bank syncing using goCardless
-            (EU/UK) and SimpleFIN (US/Canada).
+            Build your own integrations and extensions. The framework provides
+            extension points for adding custom functionality and connecting with
+            external services.
           </SmallFeature>
           <SmallFeature
-            title="Envelope Style Budgeting"
+            title="Flexible data models"
             icon={icons.wallet}
-            learnMore="/docs/budgeting/"
+            learnMore="/docs/getting-started/"
           >
-            Use the power of envelope budgeting to get on top of your finances.
-            You can only budget cash you have on hand, which means your budget
-            stays realistic and you don't make numbers up.
+            Build applications with data models that fit your needs. The
+            framework provides a solid foundation that you can extend and
+            customize for your specific use case.
           </SmallFeature>
           <SmallFeature
-            title="Transfers"
+            title="Data synchronization"
             icon={icons.dataTransferHorizontal}
-            learnMore="/docs/transactions/transfers"
+            learnMore="/docs/getting-started/sync"
           >
-            Manage transfers easily by creating transfer transactions. Actual
-            will link the transactions on both sides and update them together.
+            Keep data in sync across devices with the built-in CRDT-based
+            synchronization system. Changes are automatically synchronized
+            without conflicts.
           </SmallFeature>
           <SmallFeature
-            title="Importing Transactions"
+            title="Data import/export"
             icon={icons.commonFileDownload}
-            learnMore="/docs/transactions/importing"
+            learnMore="/docs/getting-started/"
           >
-            Import transactions from the most popular financial files: QIF, OFX,
-            QFX, CAMT.053 and CSV.
+            Import and export data in various formats. The framework provides
+            tools for data migration and integration with other systems.
           </SmallFeature>
           <SmallFeature
             title="Undo & redo"
@@ -222,10 +224,11 @@ export default function Hello() {
           <SmallFeature
             title="Migrate your data"
             icon={icons.realEstateTruckHouse}
-            learnMore="/docs/migration/"
+            learnMore="/docs/getting-started/"
           >
-            We provide builtin YNAB4 & nYNAB importers that keep all of your
-            history. There are many more available from the Actual Community.
+            Build data migration tools for your application. The framework
+            provides utilities for importing and exporting data in various
+            formats.
           </SmallFeature>
           <SmallFeature title="Dark Mode" icon={icons.moon}>
             Choose your own style with a built in dark mode and dynamic theming

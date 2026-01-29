@@ -1,7 +1,7 @@
 {
   "name": "desktop-electron",
-  "version": "26.1.0",
-  "description": "A simple and powerful personal finance system",
+  "version": "0.0.1",
+  "description": "A white label app framework for building local-first app solutions",
   "author": "Actual",
   "main": "build/desktop-electron/index.js",
   "scripts": {

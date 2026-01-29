@@ -70,8 +70,10 @@ withMigrationsDir(argv.m || getMigrationsDir(), async () => {
   switch (cmd) {
     case 'reset':
       fs.unlinkSync(argv.db);
+      // Use init.sql from migrations directory (same as runtime)
+      const migrationsDir = getMigrationsDir();
       const initSql = fs.readFileSync(
-        path.join(__dirname, '../../../src/server/sql/init.sql'),
+        path.join(migrationsDir, 'init.sql'),
         'utf8',
       );
       getDatabase().exec(initSql);

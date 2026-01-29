@@ -1,7 +1,7 @@
 {
-  "name": "Actual",
-  "short_name": "Actual",
-  "description": "A local-first personal finance tool",
+  "name": "Actual White Label",
+  "short_name": "Actual White Label",
+  "description": "A white label app framework for building local-first app solutions",
   "icons": [
     {
       "src": "/android-chrome-192x192.png",
@@ -70,14 +70,14 @@
     {
       "src": "/screenshot_wide.png",
       "form_factor": "wide",
-      "label": "Actual Budget Homepage",
+      "label": "Actual White Label Homepage",
       "type": "image/png",
       "sizes": "1280x720"
     },
     {
       "src": "/screenshot_narrow.png",
       "form_factor": "narrow",
-      "label": "Actual Budget Mobile Homepage",
+      "label": "Actual White Label Mobile Homepage",
       "type": "image/png",
       "sizes": "350x600"
     }

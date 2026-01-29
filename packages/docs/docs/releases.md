@@ -1838,7 +1838,7 @@ Important notice about the `@actual-app/api` package: starting from this release
 - [#3491](https://github.com/actualbudget/actual/pull/3491) Fix mobile page header button styles. — thanks @joel-jeremy
 - [#3492](https://github.com/actualbudget/actual/pull/3492) Fix mobile balance modal not properly coloring balance. — thanks @joel-jeremy
 - [#3495](https://github.com/actualbudget/actual/pull/3495) Removes whitespace from both ends of the category name — thanks @junyuanz1
-- [#3501](https://github.com/actualbudget/actual/pull/3501) Fix typo in README for Actual Budget Github homepage — thanks @Jonathan-Fang
+- [#3501](https://github.com/actualbudget/actual/pull/3501) Fix typo in README for Actual White Label Github homepage — thanks @Jonathan-Fang
 - [#3509](https://github.com/actualbudget/actual/pull/3509) Fix desktop popover showing in mobile To Budget options. — thanks @qedi-r
 - [#3510](https://github.com/actualbudget/actual/pull/3510) Fix templates and syntax check running on deleted categories — thanks @youngcw
 - [#3515](https://github.com/actualbudget/actual/pull/3515) Fix GoCardless linking (account selection window not appearing) — thanks @EtaoinWu

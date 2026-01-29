@@ -1,13 +1,10 @@
 import { useEffect, useMemo, useState } from 'react';
 
-import { isNonProductionEnvironment } from 'loot-core/shared/environment';
-import type { DarkTheme, Theme } from 'loot-core/types/prefs';
+import type { Theme } from 'loot-core/types/prefs';
 
 import { parseInstalledTheme, validateThemeCss } from './customThemes';
 import * as darkTheme from './themes/dark';
-import * as developmentTheme from './themes/development';
 import * as lightTheme from './themes/light';
-import * as midnightTheme from './themes/midnight';
 
 import { useFeatureFlag } from '@desktop-client/hooks/useFeatureFlag';
 import { useGlobalPref } from '@desktop-client/hooks/useGlobalPref';
@@ -15,11 +12,7 @@ import { useGlobalPref } from '@desktop-client/hooks/useGlobalPref';
 const themes = {
   light: { name: 'Light', colors: lightTheme },
   dark: { name: 'Dark', colors: darkTheme },
-  midnight: { name: 'Midnight', colors: midnightTheme },
   auto: { name: 'System default', colors: darkTheme },
-  ...(isNonProductionEnvironment() && {
-    development: { name: 'Development', colors: developmentTheme },
-  }),
 } as const;
 
 type ThemeKey = keyof typeof themes;
@@ -28,40 +21,24 @@ export const themeOptions = Object.entries(themes).map(
   ([key, { name }]) => [key, name] as [Theme, string],
 );
 
-export const darkThemeOptions = Object.entries({
-  dark: themes.dark,
-  midnight: themes.midnight,
-}).map(([key, { name }]) => [key, name] as [DarkTheme, string]);
-
 export function useTheme() {
   const [theme = 'auto', setThemePref] = useGlobalPref('theme');
   return [theme, setThemePref] as const;
 }
 
-export function usePreferredDarkTheme() {
-  const [darkTheme = 'dark', setDarkTheme] =
-    useGlobalPref('preferredDarkTheme');
-  return [darkTheme, setDarkTheme] as const;
-}
-
 export function ThemeStyle() {
   const [activeTheme] = useTheme();
-  const [darkThemePreference] = usePreferredDarkTheme();
   const [themeColors, setThemeColors] = useState<
     | typeof lightTheme
     | typeof darkTheme
-    | typeof midnightTheme
-    | typeof developmentTheme
     | undefined
   >(undefined);
 
   useEffect(() => {
     if (activeTheme === 'auto') {
-      const darkTheme = themes[darkThemePreference];
-
       function darkThemeMediaQueryListener(event: MediaQueryListEvent) {
         if (event.matches) {
-          setThemeColors(darkTheme.colors);
+          setThemeColors(themes.dark.colors);
         } else {
           setThemeColors(themes['light'].colors);
         }
@@ -76,7 +53,7 @@ export function ThemeStyle() {
       );
 
       if (darkThemeMediaQuery.matches) {
-        setThemeColors(darkTheme.colors);
+        setThemeColors(themes.dark.colors);
       } else {
         setThemeColors(themes['light'].colors);
       }
@@ -90,7 +67,7 @@ export function ThemeStyle() {
     } else {
       setThemeColors(themes[activeTheme as ThemeKey]?.colors);
     }
-  }, [activeTheme, darkThemePreference]);
+  }, [activeTheme]);
 
   if (!themeColors) return null;
 

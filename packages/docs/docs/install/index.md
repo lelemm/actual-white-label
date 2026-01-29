@@ -1,6 +1,6 @@
 # Installing Actual
 
-The Actual Budget project is made up of two parts: the client and the server. A server is not required for Actual to function but it is strongly recommended as it provides increased functionality. Below is a table of features of Actual and if those features work with just a client or if a server is needed.
+The Actual White Label project is made up of two parts: the client and the server. A server is not required for Actual to function but it is strongly recommended as it provides increased functionality. Below is a table of features of Actual and if those features work with just a client or if a server is needed.
 
 | Feature                                                   | Without Server | Needs Server |
 | :-------------------------------------------------------- | :------------: | :----------: |
@@ -62,7 +62,7 @@ In addition to our officially supported options listed above, some community mem
 
 :::caution
 
-Content contained on external links is not managed or maintained by the Actual Budget team, if you run into issues with instructions on a third party site, please contact the author in the first instance or ask in discord where a member of the community may be able to help.
+Content contained on external links is not managed or maintained by the Actual White Label team, if you run into issues with instructions on a third party site, please contact the author in the first instance or ask in discord where a member of the community may be able to help.
 
 :::
 
@@ -81,4 +81,4 @@ Content contained on external links is not managed or maintained by the Actual B
 
 [^1]: You technically don't need a server instance for this. You need to run either a web-based client or a server, but a server is the same effort.
 
-[^2]: A portion of the cost to host on PikaPods is donated to the Actual Budget Project. With that said, PikaPods is a very simple, and cost-effective way to host your server.
+[^2]: A portion of the cost to host on PikaPods is donated to the Actual White Label Project. With that said, PikaPods is a very simple, and cost-effective way to host your server.

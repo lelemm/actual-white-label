@@ -1,5 +1,5 @@
 ---
-title: Actual Budget Vision
+title: Actual White Label Vision
 ---
 
 **Vision statement**: To produce a delightful budgeting tool that meets you wherever you are in your financial journey.
@@ -23,7 +23,7 @@ title: Actual Budget Vision
 
 ### Local-first
 
-Actual is local first, meaning that the database that powers Actual Budget, and ultimately your budget, lives on your device. We don't store it on a server. Now you're wondering, what 'actual server' is for? Well, that allows you to sync changes to your budget on different devices. To do this, only the changes to the budget are sent to the server. The server stores the messages, and the client pulls down the change(s).
+Actual is local first, meaning that the database that powers Actual White Label, and ultimately your budget, lives on your device. We don't store it on a server. Now you're wondering, what 'actual server' is for? Well, that allows you to sync changes to your budget on different devices. To do this, only the changes to the budget are sent to the server. The server stores the messages, and the client pulls down the change(s).
 
 ### Open
 
@@ -35,7 +35,7 @@ The sleek and clutter-free user interface is simple to use for beginners and com
 
 ### Stable, Reliable, Secure.
 
-The contributors to Actual Budget don't just write the program; they USE the program.  We all have a vested interest in maintaining reliability, security, and stability. If issues are found, bug reports are welcomed so that issues can be remedied immediately.
+The contributors to Actual White Label don't just write the program; they USE the program.  We all have a vested interest in maintaining reliability, security, and stability. If issues are found, bug reports are welcomed so that issues can be remedied immediately.
 
 ### Privacy Focused
 
@@ -43,7 +43,7 @@ Actual has no trackers, and unless explicitly enabled, no third-party access is 
 
 ### Community-driven
 
-Actual Budget, being community-driven means that development is driven by the community and the maintainers.
+Actual White Label, being community-driven means that development is driven by the community and the maintainers.
 
 ### Primary Objectives
 
@@ -59,4 +59,4 @@ Actual Budget, being community-driven means that development is driven by the co
 
 ### Third-party use
 
-Actual is [MIT licensed](https://github.com/actualbudget/actual/blob/master/LICENSE.txt) which allows for the use of the software without restriction. The Actual Budget project and community appreciate any submissions from third-party contributors to enhance and improve our amazing project. This appreciation extends to any single volunteer or company-sponsored participants alike. Let's continue to make Actual Budget the best personal finance tool together!
+Actual is [MIT licensed](https://github.com/actualbudget/actual/blob/master/LICENSE.txt) which allows for the use of the software without restriction. The Actual White Label project and community appreciate any submissions from third-party contributors to enhance and improve our amazing project. This appreciation extends to any single volunteer or company-sponsored participants alike. Let's continue to make Actual White Label the best white label app framework for local-first solutions together!

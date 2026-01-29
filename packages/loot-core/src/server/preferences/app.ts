@@ -93,12 +93,6 @@ async function saveGlobalPrefs(prefs: GlobalPrefs) {
   if (prefs.theme !== undefined) {
     await asyncStorage.setItem('theme', prefs.theme);
   }
-  if (prefs.preferredDarkTheme !== undefined) {
-    await asyncStorage.setItem(
-      'preferred-dark-theme',
-      prefs.preferredDarkTheme,
-    );
-  }
   if (prefs.installedCustomTheme !== undefined) {
     await asyncStorage.setItem(
       'installed-custom-theme',
@@ -132,7 +126,6 @@ async function loadGlobalPrefs(): Promise<GlobalPrefs> {
     'encrypt-key': encryptKey,
     language,
     theme,
-    'preferred-dark-theme': preferredDarkTheme,
     'installed-custom-theme': installedCustomTheme,
     'server-self-signed-cert': serverSelfSignedCert,
     syncServerConfig,
@@ -145,7 +138,6 @@ async function loadGlobalPrefs(): Promise<GlobalPrefs> {
     'encrypt-key',
     'language',
     'theme',
-    'preferred-dark-theme',
     'installed-custom-theme',
     'server-self-signed-cert',
     'syncServerConfig',
@@ -158,18 +150,7 @@ async function loadGlobalPrefs(): Promise<GlobalPrefs> {
     documentDir: documentDir || getDefaultDocumentDir(),
     keyId: encryptKey && JSON.parse(encryptKey).id,
     language,
-    theme:
-      theme === 'light' ||
-      theme === 'dark' ||
-      theme === 'auto' ||
-      theme === 'development' ||
-      theme === 'midnight'
-        ? theme
-        : 'auto',
-    preferredDarkTheme:
-      preferredDarkTheme === 'dark' || preferredDarkTheme === 'midnight'
-        ? preferredDarkTheme
-        : 'dark',
+    theme: theme === 'light' || theme === 'dark' || theme === 'auto' ? theme : 'auto',
     installedCustomTheme: installedCustomTheme || undefined,
     serverSelfSignedCert: serverSelfSignedCert || undefined,
     syncServerConfig: syncServerConfig || undefined,

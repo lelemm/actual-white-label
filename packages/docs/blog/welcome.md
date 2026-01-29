@@ -1,14 +1,14 @@
 ---
-title: Welcome to Actual Budget Open Source
+title: Welcome to Actual White Label Open Source
 description: The new home for the Open Source project.
 slug: welcome-actualbudget-os
 tags: [announcement, coreproject]
 hide_table_of_contents: false
 ---
 
-As some of you may have noticed a lot of the URL's for our documentation, official test instance of Actual Budget and other parts of the project have silently been changing over the last few days, we can now give you an update on why, we have taken the decision to move everything relating to the Open Source version of Actual Budget to [actualbudget.org](https://actualbudget.org) and this takes effect across the project with immediate effect, some of the changes you will see include;
+As some of you may have noticed a lot of the URL's for our documentation, official test instance of Actual White Label and other parts of the project have silently been changing over the last few days, we can now give you an update on why, we have taken the decision to move everything relating to the Open Source version of Actual White Label to [actualbudget.org](https://actualbudget.org) and this takes effect across the project with immediate effect, some of the changes you will see include;
 
-- Our website for Actual Budget Open Source is now available at [https://actualbudget.org](https://actualbudget.org)
+- Our website for Actual White Label Open Source is now available at [https://actualbudget.org](https://actualbudget.org)
 - Documentation now lives at [https://actualbudget.org/docs](https://actualbudget.org/docs)
 - Our demo instance of actual can be found at [https://demo.actualbudget.org](https://demo.actualbudget.org)
 

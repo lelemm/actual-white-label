@@ -8,7 +8,7 @@ This feature requires you to have set up an [OpenID Provider](/docs/config/oauth
 
 ## User Directory
 
-Use this page to manage users who have access to the Actual Budget instance.
+Use this page to manage users who have access to the Actual White Label instance.
 
 To access the **User Directory** page, access the menu from the server:
 

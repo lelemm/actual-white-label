@@ -13,6 +13,7 @@ import * as Platform from 'loot-core/shared/platform';
 
 // Accounts component removed for white-label version
 import { FileName } from './BudgetName';
+import { Item } from './Item';
 import { PrimaryButtons } from './PrimaryButtons';
 import { SecondaryButtons } from './SecondaryButtons';
 import { useSidebar } from './SidebarProvider';
@@ -23,6 +24,8 @@ import { useLocalPref } from '@desktop-client/hooks/useLocalPref';
 import { useResizeObserver } from '@desktop-client/hooks/useResizeObserver';
 import { replaceModal } from '@desktop-client/modals/modalsSlice';
 import { useDispatch } from '@desktop-client/redux';
+
+import { SvgNotesPaperText } from '@actual-app/components/icons/v2';
 
 export function Sidebar() {
   const hasWindowButtons = !Platform.isBrowser && Platform.OS === 'mac';
@@ -117,6 +120,11 @@ export function Sidebar() {
             },
           }}
         >
+          <Item
+            title={t('Notes')}
+            Icon={SvgNotesPaperText}
+            to="/notes"
+          />
           <PrimaryButtons />
 
           <SecondaryButtons buttons={[]} />

@@ -4,7 +4,7 @@
 
 Nothing derails a relationship faster than (not) talking about money and how it's spent.
 
-When budgeting with a partner in Actual Budget, you have several strategies to consider, each tailored to how you
+When budgeting with a partner in Actual White Label, you have several strategies to consider, each tailored to how you
 manage finances together.
 
 One approach is maintaining a common budget where both partners share a single budget file.
@@ -13,7 +13,7 @@ A shared budget fosters collaboration but requires consistent communication to k
 you both set clear boundaries for individual and shared expenses while working together toward common financial objectives.
 See [Multi-user](/docs/getting-started/sync#multi-user-support) regarding simultaneous edits.
 
-Alternatively, you can track your partner's contributions within your personal Actual Budget file. This allows you to
+Alternatively, you can track your partner's contributions within your personal Actual White Label file. This allows you to
 maintain individual control over your finances while still acknowledging and accounting for your partner's financial
 inputs. This method benefits couples who prefer to manage their finances independently but want to monitor how their
 spending aligns with joint expenses and goals.
@@ -21,7 +21,7 @@ spending aligns with joint expenses and goals.
 Choosing the right approach depends on your communication style, financial goals, and the level of financial
 independence or collaboration you prefer in your relationship.
 
-## Tracking A Shared Account With A Shared Actual Budget
+## Tracking A Shared Account With A Shared Actual White Label
 
 If you and your partner are in a serious relationship and have begun reimbursing each other, you should consider the next step: creating a joint account for joint expenses.
 
@@ -42,7 +42,7 @@ Another tip is to let your partner be the primary account holder for your joint 
 
 1. Talk to your bank and have a joint account set up.
 2. Get two debit cards attached to the joint account, one for you and one for your partner.
-3. Create a joint Actual Budget file on a server that is also reachable by your partner.
+3. Create a joint Actual White Label file on a server that is also reachable by your partner.
 4. Decide how big each partner's contribution to the joint account should be (see below).
 5. Follow the [Starting Fresh guide](/docs/getting-started/starting-fresh) with your partner.
 
@@ -102,7 +102,7 @@ two categories called _Partner Reimbursements_ and _Common Income_.
 - _Common Income_ is all other income that is _not planned_. This could be gifts, or if you sell stuff that you own
   together, etc.
 
-## Tracking A Shared Account With Your Personal Actual Budget
+## Tracking A Shared Account With Your Personal Actual White Label
 
 Situation: I am using Actual to keep track of my budget and finances, but I share a joint account with my partner.
 
@@ -119,7 +119,7 @@ Situation: I am using Actual to keep track of my budget and finances, but I shar
 
 Each month you will add a transfer of your share to the joint account from one of your on budget accounts. You don't need a category for your contribution since it is just a transfer from one of your accounts to another.
 
-![Screenshot of joint accounts in a personal Actual Budget file](/img/joint-accounts/jointaccount-2.webp)
+![Screenshot of joint accounts in a personal Actual White Label file](/img/joint-accounts/jointaccount-2.webp)
 
 #### Partner contribution
 
@@ -127,13 +127,13 @@ Each month you will add a transfer of your share to the joint account from one o
 
 When your partner makes a contribution to the joint account, use the **Income Category** you created as the category. By having a separate category for this contribution, it will be easier to filter out when doing reports later since this isn't true income, though it is income to the budget.
 
-![Screenshot of joint accounts in a personal Actual Budget file - option 1](/img/joint-accounts/jointaccount-3.webp)
+![Screenshot of joint accounts in a personal Actual White Label file - option 1](/img/joint-accounts/jointaccount-3.webp)
 
 ##### Option 2
 
 If option 1 doesn't seem right to you, the same result could be achieved by treating the new income like a return to a store. In this case, you can assign your partners deposit directly to the shared categories. The deposit should be made into the **Joint Account** ledger. As you can see, you can fund each shared category using the **split transaction** option.
 
-![Screenshot of joint accounts in a personal Actual Budget file - option 2](/img/joint-accounts/jointaccount-5.webp)
+![Screenshot of joint accounts in a personal Actual White Label file - option 2](/img/joint-accounts/jointaccount-5.webp)
 
 ### Budgeting
 

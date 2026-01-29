@@ -5,6 +5,7 @@ import { useLocation } from 'react-router';
 import { ConfirmDeleteModal } from './modals/ConfirmDeleteModal';
 import { CreateEncryptionKeyModal } from './modals/CreateEncryptionKeyModal';
 import { EditFieldModal } from './modals/EditFieldModal';
+import { EditProductModal } from './modals/EditProductModal';
 import { EditRuleModal } from './modals/EditRuleModal';
 import { EditUserAccess } from './modals/EditAccess';
 import { EditUserFinanceApp } from './modals/EditUser';
@@ -105,6 +106,9 @@ export function Modals() {
 
         case 'enable-password-auth':
           return <PasswordEnableModal key={key} {...modal.options} />;
+
+        case 'edit-product':
+          return <EditProductModal key={key} {...modal.options} />;
 
         default:
           console.warn(`Unknown modal: ${name}`);

@@ -28,4 +28,4 @@ From the sidebar, you have easy access to all Actual's functionality.
 
 Most of these will we cover later in the tour.
 
-![The Actual Budget Sidebar](/img/a-tour-of-actual/tour-overview-sidebar.webp)
+![The Actual White Label Sidebar](/img/a-tour-of-actual/tour-overview-sidebar.webp)

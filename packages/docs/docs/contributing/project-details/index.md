@@ -2,7 +2,7 @@
 
 Actual is made up of lots of different _packages_ organized as a monorepo using Yarn workspaces. This article covers how they all fit together to form the project you know as Actual.
 
-All of our repositories can be found in the [Actual Budget](https://github.com/actualbudget) organization on GitHub, within that organization you will then find the repository containing the code for [Actual, Actual Server and the Docs](https://github.com/actualbudget/actual).
+All of our repositories can be found in the [Actual White Label](https://github.com/actualbudget) organization on GitHub, within that organization you will then find the repository containing the code for [Actual, Actual Server and the Docs](https://github.com/actualbudget/actual).
 
 The Actual monorepo contains the following main packages:
 

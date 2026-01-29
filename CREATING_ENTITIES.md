@@ -18,9 +18,56 @@ This guide explains how to add a new entity type to the white-label application.
 6. Redux Slice (desktop-client/src/entity-name/entityNameSlice.ts)
    ↓
 7. UI Components (desktop-client/src/components/entity-name/)
+   ↓
+8. Sidebar Integration
+   ↓
+9. Routing Configuration
 ```
 
-## Step-by-Step Guide
+## Choosing Your UI Pattern
+
+Before implementing the UI, decide which pattern fits your entity:
+
+### Path A: In-Place Table Editor (like Notes)
+
+**Use this when:**
+- Users need to quickly edit multiple records
+- Data is tabular (rows and columns)
+- Fields are simple (text, numbers, constrained values)
+- Bulk editing is common
+- Keyboard navigation improves productivity
+
+**Features:**
+- Full table with inline editing
+- Uses `Table`, `Row`, `Cell`, `CustomCell`, `Input`
+- Keyboard navigation via `useTableNavigator`
+- Autocomplete support for constrained fields
+- Sticky headers with proper styling
+
+**Example:** Notes entity (`packages/desktop-client/src/components/notes/NotesTable.tsx`)
+
+### Path B: Simple Page View (like Products)
+
+**Use this when:**
+- Records have complex structures
+- Detail views are important
+- Modals/forms are preferred for editing
+- Visual hierarchy matters more than speed
+- Cards or lists better represent the data
+
+**Features:**
+- Card/list-based layout
+- No inline editing (use modals or detail pages)
+- Simpler state management
+- Better for complex entities or detail-heavy views
+
+**Example:** Products entity (`packages/desktop-client/src/components/products/ProductsList.tsx`)
+
+---
+
+## Common Setup Steps (Both Paths)
+
+These steps apply regardless of which UI pattern you choose:
 
 ### 1. Database Schema (Migration)
 
@@ -127,7 +174,7 @@ export * from './patient';
 
 ### 4. Entity Type Registration (for Rules System)
 
-**File**: `packages/loot-core/src/server/main.ts` or a dedicated initialization file
+**File**: `packages/loot-core/src/server/entity-types.ts` or `packages/loot-core/src/server/main.ts`
 
 Register your entity type with the rules system so that rules can operate on entities of this type.
 
@@ -159,14 +206,6 @@ export function registerEntityTypes() {
         type: 'string',
         displayName: 'Phone',
       },
-      age: {
-        type: 'number',
-        displayName: 'Age',
-      },
-      active: {
-        type: 'boolean',
-        displayName: 'Active',
-      },
     },
   });
 
@@ -186,53 +225,6 @@ registerEntityTypes();
 - **Field Types**: Use `'string'`, `'number'`, `'boolean'`, `'date'`, or `'id'`
 - **`required`**: Mark required fields
 - **`displayName`**: Human-readable field name for the UI
-
-**Field Type Mapping:**
-
-- `'string'` - Text fields (supports: is, isNot, contains, matches, oneOf, notOneOf, doesNotContain)
-- `'number'` - Numeric fields (supports: is, isapprox, isbetween, gt, gte, lt, lte)
-- `'boolean'` - Boolean fields (supports: is)
-- `'date'` - Date fields (supports: is, isapprox, gt, gte, lt, lte)
-- `'id'` - ID/reference fields (supports: is, contains, matches, oneOf, isNot, doesNotContain, notOneOf)
-
-**Example: Appointment Entity Type**
-
-```typescript
-entityTypeRegistry.register({
-  id: 'appointment',
-  displayName: 'Appointment',
-  defaultFields: {
-    date: true,   // Appointment date
-    notes: true,  // Appointment notes/description
-    amount: false,
-  },
-  fields: {
-    patientId: {
-      type: 'id',
-      required: true,
-      displayName: 'Patient',
-    },
-    duration: {
-      type: 'number',
-      displayName: 'Duration (minutes)',
-    },
-    confirmed: {
-      type: 'boolean',
-      displayName: 'Confirmed',
-    },
-    status: {
-      type: 'string',
-      displayName: 'Status',
-    },
-  },
-});
-```
-
-**When to Register:**
-
-- Register entity types during application initialization (before rules are used)
-- Typically in `packages/loot-core/src/server/main.ts` or a dedicated initialization module
-- Can be called from the client-side initialization as well if needed
 
 ### 5. Server Handlers
 
@@ -304,6 +296,9 @@ async function deletePatient(id: string): Promise<void> {
 - Always filter by `tombstone = 0` for reads
 - Use `insertWithUUID()` for creating new records
 - Use `db.update()` for updates (handles CRDT sync automatically)
+- **Update payload shape**: client should send a single object `{ id, ...updates }`
+  and the server update handler should accept a single object parameter
+  (do not pass `id` and `updates` as two separate arguments)
 
 **File**: `packages/loot-core/src/server/main.ts`
 
@@ -412,7 +407,7 @@ export const createPatient = createAppAsyncThunk(
 export const updatePatient = createAppAsyncThunk(
   `${sliceName}/updatePatient`,
   async ({ id, ...updates }: Partial<PatientEntity> & { id: string }) => {
-    await send('patient-update', id, updates);
+    await send('patient-update', { id, ...updates });
     return { id, ...updates };
   },
 );
@@ -446,56 +441,657 @@ const rootReducer = combineReducers({
 });
 ```
 
-### 7. UI Components
+### 7. Sidebar Integration
 
-**File**: `packages/desktop-client/src/components/patients/PatientList.tsx`
+**For main sidebar items** (like Notes):
 
-Create UI components using your Redux slice.
+**File**: `packages/desktop-client/src/components/sidebar/Sidebar.tsx`
 
 ```typescript
-import { useSelector, useDispatch } from '@desktop-client/redux';
-import { getPatients, deletePatient } from '@desktop-client/patients/patientsSlice';
-import { useEffect } from 'react';
+import { Item } from './Item';
+import { SvgYourIcon } from '@actual-app/components/icons/v1';
 
-export function PatientList() {
-  const dispatch = useDispatch();
-  const { patients, isPatientsLoading } = useSelector(state => state.patients);
+// In the View containing PrimaryButtons:
+<Item
+  title={t('Your Entity')}
+  Icon={SvgYourIcon}
+  to="/your-entity"
+/>
+<PrimaryButtons />
+```
 
-  useEffect(() => {
-    dispatch(getPatients());
-  }, [dispatch]);
+**For "More" menu items** (like Products):
 
-  if (isPatientsLoading) {
-    return <div>Loading...</div>;
+**File**: `packages/desktop-client/src/components/sidebar/PrimaryButtons.tsx`
+
+```typescript
+import { SecondaryItem } from './SecondaryItem';
+import { SvgYourIcon } from '@actual-app/components/icons/v1';
+
+// Inside the isOpen conditional:
+<SecondaryItem
+  title={t('Your Entity')}
+  Icon={SvgYourIcon}
+  to="/your-entity"
+  indent={15}
+/>
+```
+
+### 8. Routing Configuration
+
+**File**: `packages/desktop-client/src/components/FinancesApp.tsx`
+
+Add your route:
+
+```typescript
+import { YourEntityComponent } from './your-entity/YourEntityComponent';
+
+// In Routes:
+<Route path="/your-entity" element={<YourEntityComponent />} />
+```
+
+---
+
+## Path A: In-Place Table Editor Implementation
+
+This path creates a table-based UI with inline editing, similar to the Notes entity.
+
+### Page Header Pattern
+
+Create a consistent page header with title, icon, and actions:
+
+```typescript
+<View
+  style={{
+    padding: '20px 20px 16px 20px',
+    borderBottom: '1px solid ' + theme.tableBorder,
+    backgroundColor: theme.pageBackground,
+  }}
+>
+  <View
+    style={{
+      flexDirection: 'row',
+      alignItems: 'center',
+      justifyContent: 'space-between',
+      marginBottom: 12,
+    }}
+  >
+    <View style={{ flexDirection: 'row', alignItems: 'center', gap: 10 }}>
+      <SvgYourIcon width={24} height={24} />
+      <Text style={{ fontSize: 28, fontWeight: 600 }}>
+        <Trans>Your Entity</Trans>
+      </Text>
+    </View>
+    <Button onPress={handleCreate}>
+      <SvgAdd width={16} height={16} />
+      <Text style={{ marginLeft: 5 }}>
+        <Trans>Add Item</Trans>
+      </Text>
+    </Button>
+  </View>
+  {itemsCount > 0 && (
+    <Text style={{ fontSize: 14, color: theme.pageTextLight, marginLeft: 34 }}>
+      <Trans>{itemsCount} {itemsCount === 1 ? 'item' : 'items'}</Trans>
+    </Text>
+  )}
+</View>
+```
+
+### Table Header Implementation
+
+Use the `TableHeader` component for proper styling:
+
+```typescript
+import { TableHeader } from '@desktop-client/components/table';
+
+<Table
+  headers={
+    <TableHeader>
+      <Cell name="field1" width={200}>
+        <Trans>Field 1</Trans>
+      </Cell>
+      <Cell name="field2" width="flex">
+        <Trans>Field 2</Trans>
+      </Cell>
+      <Cell name="delete" width={80} plain />
+    </TableHeader>
   }
+  // ... rest of table props
+/>
+```
+
+**Key Points:**
+- `TableHeader` provides consistent styling (font weight 500, proper z-index, borders)
+- Use `Cell` components for each column
+- Set `plain` prop for action columns (like delete)
+
+### Table Setup with Navigator
+
+```typescript
+import {
+  Table,
+  Row,
+  InputCell,
+  AutocompleteCell,
+  DeleteCell,
+  useTableNavigator,
+} from '@desktop-client/components/table';
+
+export function YourEntityTable() {
+  const dispatch = useDispatch();
+  const { items, isItemsLoading } = useSelector(state => state.yourEntity);
+  const tableRef = useRef<TableHandleRef>(null);
+
+  // Set up navigator with field names
+  const navigator = useTableNavigator(items || [], () => [
+    'field1',
+    'field2',
+    'field3',
+  ]);
+
+  // ... handlers
 
   return (
-    <div>
-      <h1>Patients</h1>
-      {patients.map(patient => (
-        <div key={patient.id}>
-          <h2>{patient.name}</h2>
-          <p>{patient.email}</p>
-          <button onClick={() => dispatch(deletePatient(patient.id))}>
-            Delete
-          </button>
-        </div>
-      ))}
-    </div>
+    <Table
+      ref={tableRef}
+      items={items || []}
+      navigator={navigator}
+      style={{ flex: 1 }}
+      headers={/* ... */}
+      renderItem={({ item, editing, focusedField, onEdit }) => (
+        <Row key={item.id} id={item.id}>
+          {/* Cells here */}
+        </Row>
+      )}
+    />
   );
 }
 ```
 
-**File**: `packages/desktop-client/src/components/FinancesApp.tsx`
+### Text Input Cells
 
-Add routing:
+For simple text fields, use `InputCell` directly:
 
 ```typescript
-import { PatientList } from './patients/PatientList';
-
-// In Routes:
-<Route path="/patients" element={<PatientList />} />
+<InputCell
+  name="field1"
+  width={200}
+  value={item.field1}
+  exposed={editing && focusedField === 'field1'}
+  onExpose={() => onEdit(item.id, 'field1')}
+  onUpdate={value => handleUpdate(item.id, 'field1', value)}
+/>
 ```
+
+**Key Points:**
+- `InputCell` is a complete editable cell component
+- `exposed` controls whether the cell is in edit mode
+- `onExpose` is called when the user clicks to edit
+- `onUpdate` is called with the new value when editing is complete (blur or Enter/Tab)
+
+### Autocomplete Cells
+
+For constrained value fields (status, priority, category):
+
+```typescript
+import { AutocompleteCell } from '@desktop-client/components/table';
+
+const statusOptions = [
+  { id: 'draft', name: 'Draft' },
+  { id: 'active', name: 'Active' },
+  { id: 'archived', name: 'Archived' },
+];
+
+<AutocompleteCell
+  name="status"
+  width={120}
+  value={item.status || 'active'}
+  options={statusOptions}
+  exposed={editing && focusedField === 'status'}
+  onExpose={() => onEdit(item.id, 'status')}
+  onUpdate={value => handleUpdate(item.id, 'status', value)}
+/>
+```
+
+**See**: `CREATING_AUTOCOMPLETE.md` for detailed autocomplete documentation.
+
+### Delete Cell
+
+```typescript
+<DeleteCell
+  name="delete"
+  onDelete={() => handleDelete(item.id)}
+  width={80}
+/>
+```
+
+### Empty State
+
+```typescript
+renderEmpty={
+  <View
+    style={{
+      padding: 60,
+      alignItems: 'center',
+      justifyContent: 'center',
+    }}
+  >
+    <SvgYourIcon
+      width={48}
+      height={48}
+      style={{ marginBottom: 16, opacity: 0.3 }}
+    />
+    <Text
+      style={{
+        color: theme.pageTextLight,
+        fontSize: 16,
+        textAlign: 'center',
+        marginBottom: 8,
+      }}
+    >
+      <Trans>No items yet</Trans>
+    </Text>
+    <Text style={{ color: theme.pageTextLight, fontSize: 14, textAlign: 'center' }}>
+      <Trans>Click "Add Item" to create one.</Trans>
+    </Text>
+  </View>
+}
+```
+
+### Complete Example: Notes Entity
+
+See `packages/desktop-client/src/components/notes/NotesTable.tsx` for a complete reference implementation with:
+- Page header with count
+- TableHeader component
+- Text input cells
+- Autocomplete cells for Priority and Status
+- Delete cells
+- Empty state
+
+---
+
+## Path B: Simple Page View Implementation
+
+This path creates a card/list-based UI without inline editing, similar to the Products entity.
+
+### Page Header Pattern
+
+Same header pattern as Path A:
+
+```typescript
+<View
+  style={{
+    padding: '20px 20px 16px 20px',
+    borderBottom: '1px solid ' + theme.tableBorder,
+    backgroundColor: theme.pageBackground,
+  }}
+>
+  <View
+    style={{
+      flexDirection: 'row',
+      alignItems: 'center',
+      justifyContent: 'space-between',
+      marginBottom: 12,
+    }}
+  >
+    <View style={{ flexDirection: 'row', alignItems: 'center', gap: 10 }}>
+      <SvgYourIcon width={24} height={24} />
+      <Text style={{ fontSize: 28, fontWeight: 600 }}>
+        <Trans>Your Entity</Trans>
+      </Text>
+    </View>
+    <Button onPress={handleCreate}>
+      <SvgAdd width={16} height={16} />
+      <Text style={{ marginLeft: 5 }}>
+        <Trans>Add Item</Trans>
+      </Text>
+    </Button>
+  </View>
+  {itemsCount > 0 && (
+    <Text style={{ fontSize: 14, color: theme.pageTextLight, marginLeft: 34 }}>
+      <Trans>{itemsCount} {itemsCount === 1 ? 'item' : 'items'}</Trans>
+    </Text>
+  )}
+</View>
+```
+
+### List/Card Layout
+
+```typescript
+<View
+  style={{
+    border: '1px solid ' + theme.tableBorder,
+    borderRadius: 6,
+    overflow: 'hidden',
+    backgroundColor: theme.tableBackground,
+  }}
+>
+  {items.map((item, index) => (
+    <View
+      key={item.id}
+      style={{
+        padding: 15,
+        borderBottom:
+          index < items.length - 1
+            ? '1px solid ' + theme.tableBorder
+            : 'none',
+        flexDirection: 'row',
+        alignItems: 'center',
+        justifyContent: 'space-between',
+        backgroundColor: theme.tableRowBackground,
+        ':hover': {
+          backgroundColor: theme.tableRowBackgroundHover,
+        },
+        transition: 'background-color 0.15s',
+      }}
+    >
+      <View style={{ flex: 1 }}>
+        {/* Item content */}
+      </View>
+      <Button
+        variant="bare"
+        onPress={() => handleDelete(item.id)}
+        style={{ color: theme.errorText }}
+      >
+        <Trans>Delete</Trans>
+      </Button>
+    </View>
+  ))}
+</View>
+```
+
+### Empty State
+
+```typescript
+{items.length === 0 ? (
+  <View
+    style={{
+      padding: 60,
+      alignItems: 'center',
+      justifyContent: 'center',
+    }}
+  >
+    <SvgYourIcon
+      width={48}
+      height={48}
+      style={{ marginBottom: 16, opacity: 0.3 }}
+    />
+    <Text
+      style={{
+        color: theme.pageTextLight,
+        fontSize: 16,
+        textAlign: 'center',
+        marginBottom: 8,
+      }}
+    >
+      <Trans>No items yet</Trans>
+    </Text>
+    <Text style={{ color: theme.pageTextLight, fontSize: 14, textAlign: 'center' }}>
+      <Trans>Click "Add Item" to create one.</Trans>
+    </Text>
+  </View>
+) : (
+  /* List content */
+)}
+```
+
+### Complete Example: Products Entity
+
+See `packages/desktop-client/src/components/products/ProductsList.tsx` for a complete reference implementation with:
+- Page header with count
+- Card-based list layout
+- Hover states
+- Empty state
+- Edit button with modal
+- Delete functionality
+
+---
+
+## Adding Edit Modals to Entity Pages
+
+When you need a modal dialog for editing entities (common for Path B), follow this pattern:
+
+### 1. Define the Modal Type
+
+**File**: `packages/desktop-client/src/modals/modalsSlice.ts`
+
+First, import your entity type and add a new modal definition to the `Modal` type union:
+
+```typescript
+import {
+  // ... other imports
+  type ProductEntity,
+} from 'loot-core/types/models';
+
+export type Modal =
+  // ... other modal types
+  | {
+      name: 'edit-product';
+      options: {
+        product: ProductEntity;
+        onSave?: (product: ProductEntity) => void;
+      };
+    }
+  // ... other modal types
+;
+```
+
+**Key Points:**
+- The `name` should be unique and descriptive (e.g., `'edit-product'`, `'edit-patient'`)
+- The `options` object contains data passed to the modal
+- Include an optional `onSave` callback for post-save actions
+
+### 2. Create the Modal Component
+
+**File**: `packages/desktop-client/src/components/modals/EditProductModal.tsx`
+
+```typescript
+import { useState } from 'react';
+import { Trans, useTranslation } from 'react-i18next';
+
+import { Button } from '@actual-app/components/button';
+import { Input } from '@actual-app/components/input';
+import { SpaceBetween } from '@actual-app/components/space-between';
+import { Text } from '@actual-app/components/text';
+import { theme } from '@actual-app/components/theme';
+import { View } from '@actual-app/components/view';
+
+import { type ProductEntity } from 'loot-core/types/models';
+
+import {
+  Modal,
+  ModalCloseButton,
+  ModalHeader,
+} from '@desktop-client/components/common/Modal';
+import {
+  FormField,
+  FormLabel,
+} from '@desktop-client/components/forms';
+import {
+  popModal,
+  type Modal as ModalType,
+} from '@desktop-client/modals/modalsSlice';
+import { updateProduct } from '@desktop-client/products/productsSlice';
+import { useDispatch } from '@desktop-client/redux';
+
+// Extract props type from the modal definition
+type EditProductModalProps = Extract<
+  ModalType,
+  { name: 'edit-product' }
+>['options'];
+
+export function EditProductModal({
+  product: defaultProduct,
+  onSave: originalOnSave,
+}: EditProductModalProps) {
+  const { t } = useTranslation();
+  const dispatch = useDispatch();
+
+  // Local state for form fields
+  const [name, setName] = useState(defaultProduct.name);
+  const [description, setDescription] = useState(defaultProduct.description || '');
+  const [error, setError] = useState('');
+
+  const handleSave = async () => {
+    // Validation
+    if (!name.trim()) {
+      setError(t('Name is required.'));
+      return;
+    }
+
+    const updatedProduct: ProductEntity = {
+      ...defaultProduct,
+      name: name.trim(),
+      description: description.trim(),
+    };
+
+    // Dispatch the update action
+    await dispatch(updateProduct(updatedProduct));
+    
+    // Call the optional onSave callback
+    originalOnSave?.(updatedProduct);
+    
+    // Close the modal
+    dispatch(popModal());
+  };
+
+  return (
+    <Modal name="edit-product">
+      {({ state: { close } }) => (
+        <>
+          <ModalHeader
+            title={t('Edit Product')}
+            rightContent={<ModalCloseButton onPress={close} />}
+          />
+          <View style={{ padding: '0 10px' }}>
+            {/* Form fields */}
+            <SpaceBetween style={{ marginTop: 10 }}>
+              <FormField style={{ flex: 1 }}>
+                <FormLabel title={t('Name')} htmlFor="product-name-field" />
+                <Input
+                  id="product-name-field"
+                  value={name}
+                  onChangeValue={setName}
+                  style={{ borderColor: theme.buttonMenuBorder }}
+                />
+              </FormField>
+            </SpaceBetween>
+
+            {/* Action buttons */}
+            <SpaceBetween
+              gap={10}
+              style={{
+                marginTop: 20,
+                marginBottom: 10,
+                justifyContent: 'flex-end',
+              }}
+            >
+              {error && <Text style={{ color: theme.errorText }}>{error}</Text>}
+              <Button variant="bare" onPress={close}>
+                <Trans>Cancel</Trans>
+              </Button>
+              <Button variant="primary" onPress={handleSave}>
+                <Trans>Save</Trans>
+              </Button>
+            </SpaceBetween>
+          </View>
+        </>
+      )}
+    </Modal>
+  );
+}
+```
+
+**Key Points:**
+- Use `Extract<ModalType, { name: 'edit-product' }>['options']` to get type-safe props
+- The `Modal` component receives a render function with `state: { close }`
+- Use `popModal()` to close the modal programmatically
+- Use `close` from the render function for the Cancel button
+
+### 3. Register the Modal in Modals.tsx
+
+**File**: `packages/desktop-client/src/components/Modals.tsx`
+
+Import and add the modal to the switch statement:
+
+```typescript
+import { EditProductModal } from './modals/EditProductModal';
+
+// In the switch statement:
+case 'edit-product':
+  return <EditProductModal key={key} {...modal.options} />;
+```
+
+### 4. Add the Edit Button to Your List Component
+
+**File**: `packages/desktop-client/src/components/products/ProductsList.tsx`
+
+Import `pushModal` and create a handler:
+
+```typescript
+import { pushModal } from '@desktop-client/modals/modalsSlice';
+import { type ProductEntity } from 'loot-core/types/models';
+
+export function ProductsList() {
+  const dispatch = useDispatch();
+
+  // Handler to open the edit modal
+  const handleEdit = (product: ProductEntity) => {
+    dispatch(
+      pushModal({
+        modal: {
+          name: 'edit-product',
+          options: {
+            product,
+            // Optional: callback after save
+            onSave: (updatedProduct) => {
+              console.log('Product saved:', updatedProduct);
+            },
+          },
+        },
+      }),
+    );
+  };
+
+  return (
+    // ... in your item render
+    <Button variant="bare" onPress={() => handleEdit(product)}>
+      <Trans>Edit</Trans>
+    </Button>
+  );
+}
+```
+
+### Modal Pattern Summary
+
+The modal system follows this flow:
+
+```
+1. Button Click
+   ↓
+2. dispatch(pushModal({ modal: { name, options } }))
+   ↓
+3. modalsSlice adds modal to modalStack
+   ↓
+4. Modals.tsx renders modal based on name
+   ↓
+5. User interacts with modal form
+   ↓
+6. Save: dispatch(updateEntity) + dispatch(popModal())
+   Cancel: close() from modal state
+   ↓
+7. Modal removed from stack, UI updates
+```
+
+### Reference Files
+
+- **Modal Type Definitions**: `packages/desktop-client/src/modals/modalsSlice.ts`
+- **Modal Registry**: `packages/desktop-client/src/components/Modals.tsx`
+- **Base Modal Component**: `packages/desktop-client/src/components/common/Modal.tsx`
+- **Example Edit Modal**: `packages/desktop-client/src/components/modals/EditProductModal.tsx`
+- **Example with Modal Button**: `packages/desktop-client/src/components/products/ProductsList.tsx`
+
+---
 
 ## Complete Example Checklist
 
@@ -510,7 +1106,12 @@ When creating a new entity, ensure you've covered:
 - [ ] **Redux Slice**: Created `desktop-client/src/entity-name/entityNameSlice.ts`
 - [ ] **Redux Registration**: Added slice to `desktop-client/src/redux/store.ts`
 - [ ] **UI Components**: Created components in `desktop-client/src/components/entity-name/`
+- [ ] **Page Header**: Implemented consistent header pattern
+- [ ] **Sidebar Integration**: Added to sidebar (main or More menu)
 - [ ] **Routing**: Added routes in `desktop-client/src/components/FinancesApp.tsx`
+- [ ] **Empty State**: Implemented empty state with icon and message
+- [ ] **Edit Modal** (if using Path B): Added modal type, created modal component, registered in Modals.tsx
+- [ ] **Sync Event Reload**: Reload slice in `sync-events.ts` when table changes
 - [ ] **Type Checking**: Run `yarn typecheck` to verify types
 - [ ] **Testing**: Add tests for server handlers and Redux slice
 - [ ] **Rules Support**: Verify rules can be created for this entity type
@@ -524,6 +1125,21 @@ The white-label core uses CRDT (Conflict-free Replicated Data Types) for synchro
 3. Applied via the sync system
 
 **Important**: Always use `mutator()` wrapper for write operations to ensure proper CRDT sync.
+
+### Sync Event Reloads (Client)
+
+When a sync event is applied, the client must reload any Redux slices backed by the tables included in that event. For new entities, add a reload to the sync event handler so changes survive reloads and remote updates:
+
+- **File**: `packages/desktop-client/src/sync-events.ts`
+- **Pattern**:
+
+```typescript
+if (tables.includes('your_entity_table')) {
+  store.dispatch(getYourEntities());
+}
+```
+
+This ensures entity data is re-fetched when sync changes are applied (local or remote).
 
 ## Rules System Integration
 
@@ -561,22 +1177,16 @@ Once you've registered your entity type, users can create rules that operate on 
 8. **Optimistic Updates**: Consider optimistic updates for better UX
 9. **Entity Type Registration**: Register entity types early in application initialization
 10. **Field Definitions**: Define all fields that should be available in rules, even if they're not in the UI yet
-
-## Example: Full Entity Flow
-
-For a complete working example, see how `rules` entity is implemented:
-
-- **Database**: `migrations/init.sql` (rules table)
-- **AQL Schema**: `server/aql/schema/index.ts` (rules definition)
-- **Types**: `types/models/rule.ts`
-- **Server**: `server/rules/app.ts`
-- **Redux**: Components use `send('rules-get')` directly (no slice, but could be added)
-- **UI**: `components/rules/ManageRules.tsx`, `components/rules/RuleEditor.tsx`
-
-This provides a reference implementation for creating new entities in the white-label system.
+11. **Page Headers**: Use consistent header pattern for all entity pages
+12. **Empty States**: Always provide helpful empty states with icons and clear messaging
 
 ## Additional Resources
 
 - **Rules Entity System**: See `RULES_ENTITY_SYSTEM.md` for details on the generic rules system
 - **Entity Type Registry**: See `types/rules-entity.ts` for the registry API
 - **Example Registration**: See `types/rules-entity-example.ts` for example entity type registrations
+- **Autocomplete Guide**: See `CREATING_AUTOCOMPLETE.md` for adding autocomplete fields
+- **Reference Implementations**: 
+  - Notes (Path A - Table Editor): `packages/desktop-client/src/components/notes/NotesTable.tsx`
+  - Products (Path B - Simple Page with Edit Modal): `packages/desktop-client/src/components/products/ProductsList.tsx`
+  - Edit Modal: `packages/desktop-client/src/components/modals/EditProductModal.tsx`

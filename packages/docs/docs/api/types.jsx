@@ -41,12 +41,12 @@ export const objects = {
     {
       name: 'serverURL',
       type: 'string',
-      description: <span>The URL of your Actual Budget server.</span>,
+      description: <span>The URL of your Actual White Label server.</span>,
     },
     {
       name: 'password',
       type: 'string',
-      description: <span>The password of your Actual Budget server.</span>,
+      description: <span>The password of your Actual White Label server.</span>,
     },
     {
       name: 'dataDir',

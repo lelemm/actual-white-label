@@ -278,7 +278,7 @@ If you feel a bit overwhelmed, don't worry.
 
 Getting started with budgeting is confusing, especially if you are new to zero-sum budgeting.
 
-It is a strict, but powerful, way to handle personal finance.
+It is a strict, but powerful, way to handle data management in local-first applications.
 
 If you have questions feel free to ask on our [Discord](https://discord.gg/8JfAXSgfRf).
 There are many people that have gone through the same confusion and will be happy to help you out!

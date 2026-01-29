@@ -536,7 +536,7 @@ export function ConfigServer() {
                   <Trans>Don't use a server</Trans>
                 </Button>
 
-                {isNonProductionEnvironment() && (
+                {/* {isNonProductionEnvironment() && (
                   <Button
                     variant="primary"
                     style={{ marginLeft: 15 }}
@@ -547,7 +547,7 @@ export function ConfigServer() {
                   >
                     <Trans>Create test file</Trans>
                   </Button>
-                )}
+                )} */}
               </>
             )}
           </View>

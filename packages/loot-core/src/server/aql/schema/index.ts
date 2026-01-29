@@ -198,6 +198,26 @@ export const schema = {
     meta: f('json'),
     tombstone: f('boolean'),
   },
+  // Dummy entities for white-label example
+  products: {
+    id: f('id'),
+    name: f('string', { required: true }),
+    description: f('string'),
+    price: f('float'),
+    category: f('string'),
+    created_date: f('date'),
+    tombstone: f('boolean'),
+  },
+  notes: {
+    id: f('id'),
+    title: f('string', { required: true }),
+    content: f('string'),
+    priority: f('string'),
+    status: f('string'),
+    created_date: f('date'),
+    updated_date: f('date'),
+    tombstone: f('boolean'),
+  },
 };
 
 export const schemaConfig: SchemaConfig = {

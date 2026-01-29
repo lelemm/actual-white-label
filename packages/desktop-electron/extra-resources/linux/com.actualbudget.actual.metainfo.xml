@@ -2,14 +2,14 @@
 <component type="desktop">
   <id>com.actualbudget.actual</id>
   <name>Actual Budget</name>
-  <summary>Your Finances made simple</summary>
+  <summary>White label app framework for building local-first app solutions</summary>
   <metadata_license>MIT</metadata_license>
   <project_license>MIT</project_license>
   <content_rating type="oars-1.0" />
   <description>
-    <p>Actual Budget is a fast, privacy-focused finance app based on the Envelope Budgeting method. It prioritizes user control, allowing you to manage your data independently with multi-device sync and optional end-to-end encryption. The app emphasizes user involvement over automation, offering quick, intuitive tools while keeping you in charge of your financial decisions.</p>
-    <p>Designed for speed, Actual Budget has a streamlined interface that minimizes distractions, making it easy to navigate your finances. It operates locally, ensuring functionality without a network connection while syncing data across devices. This local-first approach also enhances privacy through end-to-end encryption.</p>
-    <p>The budgeting system is grounded in real income, helping you track spending and savings accurately. The app simplifies managing transactions with a minimal, efficient interface, supporting features like split transactions and transfers. Additionally, Actual Budget offers customizable reports alongside default net worth and cash flow reports, enabling users to analyze your finances in a way that suits you.</p>
+    <p>Actual White Label is a white label app framework for building local-first app solutions. It prioritizes user control, allowing you to build applications where users manage their data independently with multi-device sync and optional end-to-end encryption. The framework emphasizes user involvement and provides quick, intuitive tools while keeping users in charge of their data.</p>
+    <p>Designed for speed, Actual White Label has a streamlined architecture that minimizes complexity, making it easy to build and deploy local-first applications. It operates locally, ensuring functionality without a network connection while syncing data across devices. This local-first approach also enhances privacy through end-to-end encryption.</p>
+    <p>The framework provides a solid foundation for building applications with flexible data models. It simplifies data management with a minimal, efficient interface and supports extensibility through plugins and custom integrations. Additionally, Actual White Label offers powerful customization options, enabling developers to build applications that suit their specific needs.</p>
   </description>
   <branding>
     <!-- For Flathub Banners - https://docs.flathub.org/banner-preview/-->

@@ -37,7 +37,7 @@ Before we get started, check the settings for your Credit Card accounts to make 
 - While you are paying off your credit card(s), it is best to use a debit card or cash. If that is not possible, and you have a card with no debt, use that one to make new purchases so you can pay it in full every month using [Paying in Full - Within the Budget](./paying-in-full.md) and work to pay off another. In any case, use _**only one credit card**_ for new purchases and pay off the one with the highest interest first.
 - We recommend doing this On Budget. If you will not use the card again after it's completely paid off and you have received a statement with a $0 balance, you can [close](/docs/accounts/index.md#closing-or-deleting-an-account) the account.
 
-### Setting Up Actual Budget for Credit Card Debt
+### Setting Up Actual White Label for Credit Card Debt
 
 - Create a **Credit Card Debt** Category Group
 - Create a separate **Bank Card Debt** category in the group for each card carrying debt. Set them all to _Rollover Overspending_. In our example below, we used **Citi Card Debt** and **DEMO Card Debt**.

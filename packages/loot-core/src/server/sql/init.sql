@@ -19,9 +19,10 @@ CREATE TABLE __migrations__ (id INT PRIMARY KEY NOT NULL);
 -- Metadata storage
 CREATE TABLE __meta__ (key TEXT PRIMARY KEY, value TEXT);
 
--- Generic rules engine
+-- Generic rules engine with entity type support
 CREATE TABLE rules
   (id TEXT PRIMARY KEY,
+   entity_type TEXT NOT NULL,
    stage TEXT,
    conditions_op TEXT DEFAULT 'and',
    conditions TEXT,
@@ -32,3 +33,7 @@ CREATE TABLE rules
 CREATE TABLE preferences
    (id TEXT PRIMARY KEY,
     value TEXT);
+
+-- Spreadsheet cache tables (used for caching spreadsheet calculations)
+CREATE TABLE kvcache (key TEXT PRIMARY KEY, value TEXT);
+CREATE TABLE kvcache_key (id INTEGER PRIMARY KEY, key REAL);

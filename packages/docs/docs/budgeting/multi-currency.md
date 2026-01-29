@@ -1,12 +1,12 @@
 # Multi-Currency
 
-The Actual Budget software is currency agnostic and does not support multi-currency. People are working on implementing currency support, but it will take time.
+The Actual White Label software is currency agnostic and does not support multi-currency. People are working on implementing currency support, but it will take time.
 For the current status visit:
 https://github.com/tlesicka/actual-budget-multicurrency-todo
 
 ## Method to Implement Multi-Currency Using Rule Templates
 
-Until multi-currency is supported natively by Actual Budget, you can use the method described in this document to achieve similar results.
+Until multi-currency is supported natively by Actual White Label, you can use the method described in this document to achieve similar results.
 
 :::warning
 This uses an _experimental feature_, so we're still working on finishing it. There may be bugs, missing functionality, or incomplete documentation, and we may decide to remove the feature in a future release. If you have any feedback, please [open an issue](https://github.com/actualbudget/actual/issues) or post a message in Discord.
